@@ -5,11 +5,6 @@ import './NavBar.css'
 
 class NavBar extends Component {
 
-  handleLogout = () => {
-    this.props.clearUser();
-    this.props.history.push('/');
-  }
-
   render() {
     return (
       <header>

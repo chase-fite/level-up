@@ -8,6 +8,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class LevelUp extends Component {
 
+    componentDidMount() {
+        localStorage.setItem("credentials", JSON.stringify(1))
+    }
+
     render() {
         return (
             <>
