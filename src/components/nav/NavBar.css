@@ -1,0 +1,11 @@
+.nav-link {
+    color: black;
+}
+
+header {
+    border: 1px solid black;
+}
+
+ul {
+    list-style: none;
+}
