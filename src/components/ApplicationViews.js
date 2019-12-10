@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-import { Route, BrowserRouter } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Home from './home/Home'
+import Workouts from './workouts/Workouts'
 
 class ApplicationViews extends Component {
     render() {
         return (
-            <BrowserRouter>
+            <>
                 <Route exact path="/" render={(props) => {
-                    return <Home {...props} />
+                    return <Home />
                 }} />
-            </BrowserRouter>
+                <Route exact path="/workouts" render={(props) => {
+                    return <Workouts />
+                }} />
+            </>
         )
     }
 }

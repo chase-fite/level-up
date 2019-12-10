@@ -1,0 +1,26 @@
+.exercise-plan {
+    margin: 1px;
+    height: 190px;
+    overflow: hidden;
+}
+
+.con-exercises {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.workout-card {
+    margin: 5px 100px 0px;
+}
+
+.navbar-style {
+    z-index: 1;
+    background-color: white;
+    border: 1px solid #007bff;
+    border-radius: .25rem;
+    height: 60px;
+}
+
+.exercise-name {
+    color: black;
+}
