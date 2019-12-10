@@ -1,11 +1,18 @@
 .nav-link {
     color: black;
+    padding: 8px !important;
 }
 
 header {
     border: 1px solid black;
 }
 
-ul {
-    list-style: none;
+.navbar-style {
+    z-index: 1;
+    background-color: white;
+    border: 1px solid #007bff;
+    border-radius: .25rem;
+    height: 60px;
+    width: auto;
+    overflow: auto;
 }

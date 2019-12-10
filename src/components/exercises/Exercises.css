@@ -1,0 +1,9 @@
+.exercise-card {
+    width: 300px !important;
+    height: 195px !important;
+    overflow: hidden;
+}
+
+.exercise-con {
+    margin: 5px 10px 0px;
+}
