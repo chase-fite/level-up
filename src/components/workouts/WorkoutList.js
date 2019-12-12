@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Workout from './Workout'
+import WorkoutCard from './WorkoutCard'
 import APIManager from '../../modules/APIManager'
 
-class Workouts extends Component {
+class WorkoutList extends Component {
   state = {
     workouts: []
   }
@@ -22,7 +22,7 @@ class Workouts extends Component {
       <>
         {this.state.workouts.map(workout => {
           return (
-            <Workout
+            <WorkoutCard
               key={workout.id}
               workout={workout}
 
@@ -34,4 +34,4 @@ class Workouts extends Component {
   }
 }
 
-export default Workouts
+export default WorkoutList

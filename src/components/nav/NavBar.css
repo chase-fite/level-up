@@ -3,6 +3,10 @@
     padding: 8px !important;
 }
 
+.nav-link:hover {
+    color: #007bff;
+}
+
 header {
     border: 1px solid black;
 }

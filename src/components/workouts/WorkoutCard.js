@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card, Container, Row, Col } from 'react-bootstrap'
 import './Workouts.css'
 
-class Workout extends Component {
+class WorkoutCard extends Component {
     state = {
         exercises: []
     }
@@ -25,7 +25,7 @@ class Workout extends Component {
                                 <Col md={4} key={exercise.id}>
                                     <Card className="exercise-plan text-primary">
                                         <Card.Body>
-                                            <div className="exercise-name">{exercise.name}</div>
+                                            <div className="exercise-name underline">{exercise.name}</div>
                                             {exercise.plan.split('--').map((set, indx) => {
                                                 return <div key={indx}>{set}</div>
                                             })}   
@@ -41,4 +41,4 @@ class Workout extends Component {
     }
 }
 
-export default Workout
+export default WorkoutCard

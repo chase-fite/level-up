@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Home from './home/Home'
-import Workouts from './workouts/Workouts'
-import Exercises from './exercises/Exercises'
+import WorkoutList from './workouts/WorkoutList'
+import ExerciseList from './exercises/ExerciseList'
+import History from './history/History'
 
 class ApplicationViews extends Component {
     render() {
@@ -12,10 +13,13 @@ class ApplicationViews extends Component {
                     return <Home />
                 }} />
                 <Route exact path="/workouts" render={(props) => {
-                    return <Workouts />
+                    return <WorkoutList />
                 }} />
                 <Route exact path="/exercises" render={(props) => {
-                    return <Exercises />
+                    return <ExerciseList />
+                }} />
+                <Route exact path="/history" render={(props) => {
+                    return <History />
                 }} />
             </>
         )

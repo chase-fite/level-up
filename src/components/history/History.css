@@ -1,0 +1,23 @@
+.card-inner-container {
+    display: flex;
+}
+
+.results {
+    color: black;
+}
+
+.left-inner-container {
+    margin-right: 10px;
+}
+
+.workout-card {
+    overflow: hidden;
+}
+
+.result-color {
+    color: black;
+}
+
+.underline {
+    text-decoration: underline;
+}

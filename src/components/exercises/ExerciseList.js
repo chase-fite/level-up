@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
-import Exercise from './Exercise'
+import ExerciseCard from './ExerciseCard'
 import APIManager from '../../modules/APIManager'
 import { Container, Row, Col } from 'react-bootstrap'
 import './Exercises.css'
 
-class Exercises extends Component {
+class ExerciseList extends Component {
   state = {
     exercises: []
   }
 
 
   componentDidMount() {
-    APIManager.get(`exercises?_expand=workout&_sort=name`)
+    APIManager.get(`workouts?userId=1&_embed=exercises&_sort=name`)
     .then(results => {
+      let tempArray = []
+      results.forEach(obj => {
+        obj.exercises.forEach(exercise => tempArray.push(exercise))
+      })
+      tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
       this.setState({
-        exercises: results
+        exercises: tempArray
       })
     })
   }
@@ -26,7 +31,7 @@ class Exercises extends Component {
                 {this.state.exercises.map(exercise => {
                 return (
                     <Col md={4} key={exercise.id}>
-                        <Exercise
+                        <ExerciseCard
                         exercise={exercise}
                         />
                     </Col>
@@ -38,4 +43,4 @@ class Exercises extends Component {
   }
 }
 
-export default Exercises
+export default ExerciseList
