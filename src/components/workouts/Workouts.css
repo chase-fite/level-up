@@ -1,5 +1,6 @@
 .exercise-plan {
     margin: 1px;
+    width: 300px;
     height: 190px;
     overflow: hidden;
 }
@@ -10,9 +11,5 @@
 }
 
 .workout-card {
-    margin: 5px 10px 0px;
-}
-
-.exercise-name {
-    color: black;
+    margin: 5px 50px 0px;
 }

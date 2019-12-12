@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card } from 'react-bootstrap'
 import './Exercises.css'
 
-class Exercise extends Component {
+class ExerciseCard extends Component {
     
     render() {
         return (
@@ -19,4 +19,4 @@ class Exercise extends Component {
     }
 }
 
-export default Exercise
+export default ExerciseCard
