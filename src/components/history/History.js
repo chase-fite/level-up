@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import CompletedWorkout from './CompletedWorkout'
 import APIManager from '../../modules/APIManager'
-// import APIManager from '../../modules/APIManager'
-// import CompletedWorkout from './CompletedWorkout'
 
 class History extends Component {
   state = {
@@ -13,8 +11,12 @@ class History extends Component {
   componentDidMount() {
     APIManager.get(`completedWorkouts?userId=1&_sort=date&_order=desc&_embed=results&_expand=workout`)
     .then(completedWorkoutsR => {
+      let temp = completedWorkoutsR.filter(workout => {
+        return workout.active === false
+      })
+      console.log("temp", temp)
       this.setState({
-        completedWorkouts: completedWorkoutsR
+        completedWorkouts: temp
       })
     })
   }

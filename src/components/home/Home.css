@@ -1,0 +1,48 @@
+.set-container {
+    margin-bottom: 15px;
+}
+
+.set {
+    width: 220px;
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 60px;
+    height: 24px;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    margin-top: 24px;
+    margin-left: 10px;
+    width: 70px;
+}
+
+.set-input-container {
+    display: flex;
+    /* border: 1px lightgrey solid; */
+    border-radius: .25rem;
+    min-width: 310px;
+    overflow: hidden;
+    background-color: white;
+    margin-right: 20px;
+}
+
+.aw-container {
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+}
+
+.aw-exercise-name {
+    text-decoration: underline;
+    color: black;
+}
+
+.aw-edit-icon {
+    margin-left: 40px;
+}
+
+.aw-remove-icon {
+    margin-left: 25px;
+}

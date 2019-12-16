@@ -16,7 +16,9 @@ class LevelUp extends Component {
         return (
             <>
                 <NavBar />
-                <ApplicationViews />
+                <ApplicationViews 
+                    setActiveWorkout={this.setActiveWorkout}
+                />
             </>
         )
     }
