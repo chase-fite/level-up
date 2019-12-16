@@ -11,5 +11,35 @@
 }
 
 .workout-card {
-    margin: 5px 50px 0px;
+    margin: 5px 20px 0px;
+}
+
+.edit-icon {
+    position: relative;
+    z-index: 1;
+    left: 172px;
+    color: #007bff;
+}
+
+.delete-icon {
+    position: relative;
+    z-index: 1;
+    left: 86px;
+    color: #007bff;
+}
+
+
+.activate-icon {
+    position: relative;
+    z-index: 1;
+    color: #007bff;
+}
+
+.icon-container {
+    display: flex;
+    margin: 8px 0;
+}
+
+.hr {
+    margin: 0;
 }

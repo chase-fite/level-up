@@ -46,10 +46,15 @@ class CompletedWorkout extends Component {
         })
     }
 
+    convertDateTimeFromISO(date) {
+        return new Date(date)
+    }
+
     render() {
         return (
             <Card className="workout-card border-primary mb-3">
-                <Card.Header className="text-center">{this.props.completedWorkout.workout.name}</Card.Header>
+                <Card.Header className="text-center">{this.props.completedWorkout.workout.name} - {this.convertDateTimeFromISO(this.props.completedWorkout.date).toDateString()}
+                </Card.Header>
                 <Container className="con-exercises">
                     <Row noGutters={true}>
                         {this.state.exerciseList.map((exercise, exIndx) => {

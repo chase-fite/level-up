@@ -12,8 +12,11 @@ class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <Home />
                 }} />
+                <Route exact path="/home" render={(props) => {
+                    return <Home />
+                }} />
                 <Route exact path="/workouts" render={(props) => {
-                    return <WorkoutList />
+                    return <WorkoutList {...props} />
                 }} />
                 <Route exact path="/exercises" render={(props) => {
                     return <ExerciseList />

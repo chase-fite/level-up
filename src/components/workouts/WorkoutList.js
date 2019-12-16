@@ -25,6 +25,7 @@ class WorkoutList extends Component {
             <WorkoutCard
               key={workout.id}
               workout={workout}
+              {...this.props}
 
             />
           )
