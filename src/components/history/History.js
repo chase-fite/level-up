@@ -14,7 +14,6 @@ class History extends Component {
       let temp = completedWorkoutsR.filter(workout => {
         return workout.active === false
       })
-      console.log("temp", temp)
       this.setState({
         completedWorkouts: temp
       })

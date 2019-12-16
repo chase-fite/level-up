@@ -3,7 +3,7 @@
 }
 
 .set {
-    width: 220px;
+    width: 200px;
     margin-bottom: 20px;
 }
 
@@ -14,7 +14,6 @@
 }
 
 .input-container {
-    margin-top: 24px;
     margin-left: 10px;
     width: 70px;
 }
@@ -39,10 +38,10 @@
     color: black;
 }
 
-.aw-edit-icon {
-    margin-left: 40px;
-}
-
 .aw-remove-icon {
     margin-left: 25px;
+}
+
+.aw-save-icon {
+    margin-left: 45px;
 }
