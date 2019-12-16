@@ -20,7 +20,7 @@ class Home extends Component {
           return completedWorkout.active === true
         })
         temp = temp[0]
-        if(temp) {
+        if (temp) {
           APIManager.get(`workouts/${temp.workoutId}?_embed=exercises`)
             .then(workout => {
               this.setState({
@@ -34,17 +34,37 @@ class Home extends Component {
 
   removeActiveWorkout = () => {
     APIManager.delete(`completedWorkouts/${this.state.activeWorkout.id}`)
-    .then(() => {
-      this.setState({
-        activeWorkout: {
-          workout: {
-            name: ""
-          }
-        },
-        exercises: []
+      .then(() => {
+        this.setState({
+          activeWorkout: {
+            workout: {
+              name: ""
+            }
+          },
+          exercises: []
+        })
       })
+  }
+
+  clearActiveWorkout = () => {
+    const savedWorkout = {
+      id: this.state.activeWorkout.id,
+      userId: this.state.activeWorkout.userId,
+      workoutId: this.state.activeWorkout.workoutId,
+      date: this.state.activeWorkout.date,
+      active: false
+    }
+    APIManager.update(`completedWorkouts`, savedWorkout)
+    this.setState({
+      activeWorkout: {
+        workout: {
+          name: ""
+        }
+      },
+      exercises: []
     })
   }
+
 
   render() {
     return (
@@ -54,6 +74,7 @@ class Home extends Component {
           activeWorkout={this.state.activeWorkout}
           exercises={this.state.exercises}
           removeActiveWorkout={this.removeActiveWorkout}
+          clearActiveWorkout={this.clearActiveWorkout}
         />
       </>
     )
