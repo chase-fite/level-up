@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faMinusCircle, faEdit } from '@fortawesome/free-solid-svg-icons'
 import './History.css'
 
 class CompletedWorkout extends Component {
     state = {
         exerciseList: [],
-        resultList: [],
-        editMode: false,
-        editEntityId: ''
+        resultList: []
     }
 
     componentDidMount() {
@@ -23,7 +21,6 @@ class CompletedWorkout extends Component {
                 // pulls the object out of the 1 item array
                 matchedTemplate = matchedTemplate[0]
 
-                // temporary containers to help with sorting
                 let tempExerciseList = matchedTemplate.exercises
                 let tempResultList = []
 
@@ -48,11 +45,6 @@ class CompletedWorkout extends Component {
         const cwId = this.props.completedWorkout.id
         APIManager.delete(`completedWorkouts/${this.props.completedWorkout.id}`)
             .then(() => {
-                this.state.resultList.forEach(result => {
-                    if (result.completedWorkoutId === this.props.completedWorkout.id) {
-                        APIManager.delete(`results/${result.id}`)
-                    }
-                })
                 this.setState({
                     exerciseList: [],
                     resultList: []
@@ -91,9 +83,10 @@ class CompletedWorkout extends Component {
                     })}
                 </div>
                 <div>
-                    {/* <FontAwesomeIcon id={this.props.workout.id} icon={faCheckCircle} onClick={this.setActiveWorkout} /> */}
                     <FontAwesomeIcon icon={faMinusCircle} onClick={this.deleteCompletedWorkout} />
-                    {/* <FontAwesomeIcon icon={faEdit} /> */}
+                    <FontAwesomeIcon icon={faEdit} onClick={() => {
+                        this.props.editModeOn(this.props.completedWorkout.id)}}
+                    />
                 </div>
             </>
 
