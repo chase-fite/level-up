@@ -1,47 +1,28 @@
-.set-container {
-    margin-bottom: 15px;
-}
-
-.set {
-    width: 200px;
-    margin-bottom: 20px;
-}
-
-.input {
-    width: 60px;
-    height: 24px;
-    margin-bottom: 20px;
-}
-
-.input-container {
-    margin-left: 10px;
-    width: 70px;
-}
-
-.set-input-container {
+.aw-workout-container {
     display: flex;
-    /* border: 1px lightgrey solid; */
+    flex-wrap: wrap;
+}
+
+.aw-input {
+    width: 50px;
+    height: 24px;
+    margin-bottom: 24px;
+}
+
+.aw-set {
+    margin-bottom: 24px;
+}
+
+.aw-exercise-input-container {
+    border: 1px solid black;
     border-radius: .25rem;
-    min-width: 310px;
-    overflow: hidden;
-    background-color: white;
-    margin-right: 20px;
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    width: 300px;
 }
 
-.aw-container {
-    margin-right: 10px !important;
-    margin-left: 10px !important;
-}
-
-.aw-exercise-name {
-    text-decoration: underline;
-    color: black;
-}
-
-.aw-remove-icon {
-    margin-left: 25px;
-}
-
-.aw-save-icon {
-    margin-left: 45px;
+.aw-input-container {
+    margin-left: 40px; 
+    margin-right: 5px;
 }

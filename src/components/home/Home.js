@@ -32,18 +32,16 @@ class Home extends Component {
       })
   }
 
-  removeActiveWorkout = () => {
+  deleteActiveWorkout = () => {
     APIManager.delete(`completedWorkouts/${this.state.activeWorkout.id}`)
-      .then(() => {
-        this.setState({
-          activeWorkout: {
-            workout: {
-              name: ""
-            }
-          },
-          exercises: []
-        })
-      })
+    this.setState({
+      activeWorkout: {
+        workout: {
+          name: ""
+        }
+      },
+      exercises: []
+    })
   }
 
   clearActiveWorkout = () => {
@@ -73,7 +71,7 @@ class Home extends Component {
           key={this.state.activeWorkout.id}
           activeWorkout={this.state.activeWorkout}
           exercises={this.state.exercises}
-          removeActiveWorkout={this.removeActiveWorkout}
+          deleteActiveWorkout={this.deleteActiveWorkout}
           clearActiveWorkout={this.clearActiveWorkout}
         />
       </>

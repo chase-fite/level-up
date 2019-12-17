@@ -1,45 +1,12 @@
-.exercise-plan {
-    margin: 1px;
-    width: 300px;
-    height: 190px;
-    overflow: hidden;
-}
-
-.con-exercises {
-    padding: 0px !important;
-    margin: 0px !important;
-}
-
-.workout-card {
-    margin: 5px 20px 0px;
-}
-
-.edit-icon {
-    position: relative;
-    z-index: 1;
-    left: 172px;
-    color: #007bff;
-}
-
-.delete-icon {
-    position: relative;
-    z-index: 1;
-    left: 86px;
-    color: #007bff;
-}
-
-
-.activate-icon {
-    position: relative;
-    z-index: 1;
-    color: #007bff;
-}
-
-.icon-container {
+.workout-card-body {
     display: flex;
-    margin: 8px 0;
+    flex-wrap: wrap;
 }
 
-.hr {
-    margin: 0;
+.exercise-container {
+    border: 1px solid black;
+    border-radius: .25rem;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
 }
