@@ -7,7 +7,6 @@ class History extends Component {
     completedWorkouts: []
   }
 
-
   componentDidMount() {
     APIManager.get(`completedWorkouts?userId=1&_sort=date&_order=desc&_embed=results&_expand=workout`)
     .then(completedWorkoutsR => {
@@ -20,6 +19,15 @@ class History extends Component {
     })
   }
 
+  removeCompletedWorkout = (cwId) => {
+    let temp = this.state.completedWorkouts.filter(cw => {
+      return cw.id !== cwId
+    })
+    this.setState({
+      completedWorkouts: temp
+    })
+  }
+
   render() {
     return (
       <>
@@ -28,6 +36,7 @@ class History extends Component {
             <CompletedWorkout
               key={completedWorkout.id}
               completedWorkout={completedWorkout}
+              removeCompletedWorkout={this.removeCompletedWorkout}
             />
           )
         })}

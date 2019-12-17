@@ -1,4 +1,4 @@
-.exercise-card {
+/* .exercise-card {
     width: 250px !important;
     height: 195px !important;
     overflow: hidden;
@@ -11,4 +11,17 @@
 .exercise-name {
     color: #007bff;
     text-decoration: underline;
+} */
+
+.el-exercise-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ec-exercise-container {
+    border: 1px solid black;
+    border-radius: .25rem;
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
 }

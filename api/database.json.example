@@ -1,149 +1,184 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "chase",
-            "email": "chase@email.com",
-            "password": "123"
-        },
-        {
-            "id": 2,
-            "name": "corri",
-            "email": "corri@email.com",
-            "password": "123"
-        },
-        {
-            "id": 3,
-            "name": "matt",
-            "email": "matt@email.com",
-            "password": "123"
-        }
-    ],
-    "workouts": [
-        {
-            "id": 1,
-            "userId": 1,
-            "name": "back and bicep"
-        },
-        {
-            "id": 2,
-            "userId": 1,
-            "name": "chest and tricep"
-        },
-        {
-            "id": 3,
-            "userId": 1,
-            "name": "legs and shoulders"
-        }
-    ],
-    "exercises": [
-        {
-            "id": 1,
-            "workoutId": 1,
-            "name": "bicep curl",
-            "plan": "set 1: 12 reps, 30 lbs--set 2: 10 reps, 35 lbs--set 3: 8 reps, 40 lbs"
-        },
-        {
-            "id": 2,
-            "workoutId": 1,
-            "name": "rows",
-            "plan": "set 1: 12 reps, 80 lbs--set 2: 10 reps, 90 lbs--set 3: 8 reps, 100 lbs"
-        },
-        {
-            "id": 3,
-            "workoutId": 1,
-            "name": "pull ups",
-            "plan": "set 1: 12 reps, bodyweight--set 2: 12 reps, bodyweight--set 3: 8 reps, bodyweight"
-        },
-        {
-            "id": 4,
-            "workoutId": 2,
-            "name": "bench press",
-            "plan": "set 1: 12 reps, 135 lbs--set 2: 10 reps, 145 lbs--set 3: 8 reps, 150 lbs"
-        },
-        {
-            "id": 5,
-            "workoutId": 2,
-            "name": "tricep pulldown",
-            "plan": "set 1: 12 reps, 50 lbs--set 2: 10 reps, 60 lbs--set 3: 8 reps, 70 lbs"
-        },
-        {
-            "id": 6,
-            "workoutId": 2,
-            "name": "dips",
-            "plan": "set 1: 12 reps, bodyweight--set 2: 12 reps, bodyweight--set 3: 12 reps, bodyweight"
-        },
-        {
-            "id": 7,
-            "workoutId": 3,
-            "name": "squats",
-            "plan": "set 1: 12 reps, 150 lbs--set 2: 10 reps, 160 lbs--set 3: 8 reps, 170 lbs"
-        },
-        {
-            "id": 8,
-            "workoutId": 3,
-            "name": "military press",
-            "plan": "set 1: 12 reps, 50 lbs--set 2: 10 reps, 60 lbs--set 3: 8 reps, 70 lbs"
-        },
-        {
-            "id": 9,
-            "workoutId": 3,
-            "name": "calf raises",
-            "plan": "set 1: 20 reps, 45 lbs--set 2: 20 reps, 45 lbs--set 3: 20 reps, 45 lbs"
-        }
-    ],
-    "completedWorkouts": [
-        {
-            "id": 1,
-            "userId": 1,
-            "workoutId": 1,
-            "date": "12/8/2019",
-            "active": false
-        },
-        {
-            "id": 1,
-            "userId": 1,
-            "workoutId": 3,
-            "date": "12/9/2019",
-            "active": false
-        }
-    ],
-    "results": [
-        {
-            "id": 1,
-            "completedWorkoutId": 1,
-            "exerciseId": 1,
-            "performance": "set 1: 12 reps, 30 lbs--set 2: 6 reps, 35 lbs--set 3: 6 reps, 40 lbs"
-        },
-        {
-            "id": 2,
-            "completedWorkoutId": 1,
-            "exerciseId": 2,
-            "performance": "set 1: 12 reps, 80 lbs--set 2: 10 reps, 90 lbs--set 3: 8 reps, 100 lbs"
-        },
-        {
-            "id": 3,
-            "completedWorkoutId": 1,
-            "exerciseId": 3,
-            "performance": "set 1: 12 reps, bodyweight--set 2: 11 reps, bodyweight--set 3: 11 reps, bodyweight"
-        },
-        {
-            "id": 4,
-            "completedWorkoutId": 2,
-            "exerciseId": 7,
-            "performance": "set 1: 12 reps, 150 lbs--set 2: 10 reps, 160 lbs--set 3: 8 reps, 170 lbs"
-        },
-        {
-            "id": 5,
-            "completedWorkoutId": 2,
-            "exerciseId": 8,
-            "performance": "set 1: 12 reps, 50 lbs--set 2: 8 reps, 60 lbs--set 3: 4 reps, 70 lbs"
-        },
-        {
-            "id": 6,
-            "completedWorkoutId": 2,
-            "exerciseId": 9,
-            "performance": "set 1: 20 reps, 45 lbs--set 2: 16 reps, 45 lbs--set 3: 15 reps, 45 lbs"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "chase",
+      "email": "chase@email.com",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "name": "corri",
+      "email": "corri@email.com",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "name": "matt",
+      "email": "matt@email.com",
+      "password": "123"
+    }
+  ],
+  "workouts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "Back and Bicep"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "name": "Chest and Tricep"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "name": "Legs and Shoulders"
+    }
+  ],
+  "exercises": [
+    {
+      "id": 1,
+      "workoutId": 1,
+      "type": "reps",
+      "name": "bicep curl",
+      "plan": "set 1: 12 reps, 30 lbs--set 2: 10 reps, 35 lbs--set 3: 8 reps, 40 lbs--set 4: 8 reps, 40 lbs--set 5: 8 reps, 40 lbs--set 6: 8 reps, 40 lbs--set 7: 8 reps, 40 lbs"
+    },
+    {
+      "id": 2,
+      "workoutId": 1,
+      "type": "reps",
+      "name": "rows",
+      "plan": "set 1: 12 reps, 80 lbs--set 2: 10 reps, 90 lbs--set 3: 8 reps, 100 lbs"
+    },
+    {
+      "id": 3,
+      "workoutId": 1,
+      "type": "reps",
+      "name": "pull ups",
+      "plan": "set 1: 12 reps, bodyweight--set 2: 12 reps, bodyweight--set 3: 8 reps, bodyweight"
+    },
+    {
+      "id": 4,
+      "workoutId": 2,
+      "type": "reps",
+      "name": "bench press",
+      "plan": "set 1: 12 reps, 135 lbs--set 2: 10 reps, 145 lbs--set 3: 8 reps, 150 lbs"
+    },
+    {
+      "id": 5,
+      "workoutId": 2,
+      "type": "reps",
+      "name": "tricep pulldown",
+      "plan": "set 1: 12 reps, 50 lbs--set 2: 10 reps, 60 lbs--set 3: 8 reps, 70 lbs"
+    },
+    {
+      "id": 6,
+      "workoutId": 2,
+      "type": "reps",
+      "name": "dips",
+      "plan": "set 1: 12 reps, bodyweight--set 2: 12 reps, bodyweight--set 3: 12 reps, bodyweight"
+    },
+    {
+      "id": 7,
+      "workoutId": 3,
+      "type": "reps",
+      "name": "squats",
+      "plan": "set 1: 12 reps, 150 lbs--set 2: 10 reps, 160 lbs--set 3: 8 reps, 170 lbs"
+    },
+    {
+      "id": 8,
+      "workoutId": 3,
+      "type": "reps",
+      "name": "military press",
+      "plan": "set 1: 12 reps, 50 lbs--set 2: 10 reps, 60 lbs--set 3: 8 reps, 70 lbs"
+    },
+    {
+      "id": 9,
+      "workoutId": 3,
+      "type": "reps",
+      "name": "calf raises",
+      "plan": "set 1: 20 reps, 45 lbs--set 2: 20 reps, 45 lbs--set 3: 20 reps, 45 lbs"
+    },
+    {
+      "id": 10,
+      "workoutId": 1,
+      "type": "reps",
+      "name": "hammer curls",
+      "plan": "set 1: 12 reps, 30 lbs--set 2: 10 reps, 35 lbs--set 3: 8 reps, 40 lbs"
+    },
+    {
+      "id": 11,
+      "workoutId": 1,
+      "type": "reps",
+      "name": "crunches",
+      "plan": "set 1: 60 reps, bodyweight--set 2: 60 reps, bodyweight--set 3: 60 reps, bodyweight"
+    }
+  ],
+  "completedWorkouts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "workoutId": 1,
+      "date": "2019-12-11T17:22:58.408Z",
+      "active": false
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "workoutId": 3,
+      "date": "2019-12-12T17:22:58.408Z",
+      "active": false
+    }
+  ],
+  "results": [
+    {
+      "id": 1,
+      "completedWorkoutId": 1,
+      "exerciseId": 1,
+      "performance": "12 reps--6 reps--6 reps"
+    },
+    {
+      "id": 2,
+      "completedWorkoutId": 1,
+      "exerciseId": 2,
+      "performance": "12 reps--6 reps--6 reps"
+    },
+    {
+      "id": 3,
+      "completedWorkoutId": 1,
+      "exerciseId": 3,
+      "performance": "12 reps--6 reps--6 reps"
+    },
+    {
+      "id": 4,
+      "completedWorkoutId": 2,
+      "exerciseId": 7,
+      "performance": "12 reps--6 reps--6 reps"
+    },
+    {
+      "id": 5,
+      "completedWorkoutId": 2,
+      "exerciseId": 8,
+      "performance": "12 reps--6 reps--6 reps"
+    },
+    {
+      "id": 6,
+      "completedWorkoutId": 2,
+      "exerciseId": 9,
+      "performance": "12 reps--6 reps--6 reps"
+    },
+    {
+      "id": 7,
+      "completedWorkoutId": 1,
+      "exerciseId": 11,
+      "performance": "60 reps--50 reps--55 reps"
+    },
+    {
+      "id": 8,
+      "completedWorkoutId": 1,
+      "exerciseId": 10,
+      "performance": "12 reps--12 reps--12 reps"
+    }
+  ]
 }

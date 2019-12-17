@@ -1,23 +1,17 @@
-.card-inner-container {
+.cw-exercise-container {
     display: flex;
+    border: 1px solid black;
+    border-radius: .25em;
+    margin: 5px;
+    width: 300px;
+    padding: 5px;
 }
 
-.results {
-    color: black;
+.cw-workout-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.left-inner-container {
-    margin-right: 10px;
-}
-
-.workout-card {
-    overflow: hidden;
-}
-
-.result-color {
-    color: black;
-}
-
-.underline {
-    text-decoration: underline;
+.cw-results-container {
+    margin-left: 40px;
 }
