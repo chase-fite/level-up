@@ -48,7 +48,7 @@ class ActiveWorkout extends Component {
                                     })}
                                 </div>
                                 <div className="aw-input-container">
-                                    <div>{exercise.type}</div>
+                                    <div>{exercise.format.split('-')[0]}</div>
                                     {exercise.plan.split('--').map((set, indx) => {
                                         return (
                                             <div key={indx}>

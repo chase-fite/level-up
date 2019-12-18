@@ -48,7 +48,7 @@ class CWEditForm extends Component {
             let resultString = ""
             for (let property in this.refs) {
                 if (property.includes(exercise.name)) {
-                    resultString += `${this.refs[property].value} ${exercise.type}--`
+                    resultString += `${this.refs[property].value} ${exercise.format.split('-')[0]}--`
                 }
             }
             resultString = resultString.slice(0, (resultString.length - 2))
@@ -78,7 +78,7 @@ class CWEditForm extends Component {
                                     })}
                                 </div>
                                 <div className="aw-input-container">
-                                    <div>{exercise.type}</div>
+                                    <div>{exercise.format.split('-')[0]}</div>
                                     {this.state.resultList[exIndx].performance.split('--').map((result, indx) => {
                                         return (
                                             <div key={indx}>

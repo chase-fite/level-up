@@ -10,9 +10,10 @@ class WorkoutList extends Component {
 
   componentDidMount() {
     APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
-    .then(results => {
+    .then(workouts => {
+      const filteredWorkouts = workouts.filter(workout => workout.name !== "storage")
       this.setState({
-        workouts: results
+        workouts: filteredWorkouts
       })
     })
   }

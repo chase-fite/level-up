@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import './Exercises.css'
 
 class ExerciseCard extends Component {
@@ -10,6 +12,7 @@ class ExerciseCard extends Component {
                 {this.props.exercise.plan.split('--').map((set, indx) => {
                     return <div key={indx}>{set}</div>
                 })}
+                <FontAwesomeIcon icon={faEdit} onClick={() => this.props.editModeOn(this.props.exercise.id)} />
             </div>
 
 

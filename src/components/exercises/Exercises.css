@@ -23,7 +23,7 @@
     border-radius: .25rem;
     margin: 5px;
     padding: 5px;
-    width: 200px;
+    min-width: 200px;
 }
 
 .ex-label-input-pair {
@@ -32,4 +32,14 @@
 
 .ecf-input-container {
     display: flex;
+}
+
+.ee-input-container {
+    display: flex;
+}
+
+.ee-input {
+    width: 50px;
+    height: 24px;
+    margin-bottom: 24px;
 }

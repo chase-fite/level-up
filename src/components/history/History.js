@@ -7,7 +7,7 @@ class History extends Component {
   state = {
     completedWorkouts: [],
     editMode: false,
-    editEntityId: Number()
+    editEntityId: 0
   }
 
   componentDidMount() {
@@ -47,7 +47,7 @@ class History extends Component {
         this.setState({
           completedWorkouts: temp,
           editMode: false,
-          editEntityId: Number()
+          editEntityId: 0
         })
       })
   }
