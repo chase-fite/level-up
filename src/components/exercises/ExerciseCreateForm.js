@@ -19,7 +19,6 @@ class ExerciseEditForm extends Component {
         this.setState({
             setSelectArray: this.createRangeArray(12)
         })
-        console.log("ex edit state", this.state)
     }
 
     createRangeArray = (size) => {
