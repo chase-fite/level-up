@@ -11,13 +11,14 @@ class CWEditForm extends Component {
     }
     
     componentDidMount() {
-        APIManager.get(`workouts?_embed=exercises&userId=1`)
+        APIManager.get(`workouts?_embed=exercises&userId=2`)
             .then(workoutTemplatesR => {
 
                 // gets the workout template that matches the completed workout
                 let matchedTemplate = workoutTemplatesR.filter(template => {
                     return this.props.completedWorkout.workoutId === template.id
                 })
+                
                 // pulls the object out of the 1 item array
                 matchedTemplate = matchedTemplate[0]
 

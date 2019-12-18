@@ -9,7 +9,7 @@ class WorkoutList extends Component {
 
 
   componentDidMount() {
-    APIManager.get(`workouts?userId=1&_embed=exercises&_sort=name`)
+    APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
     .then(results => {
       this.setState({
         workouts: results

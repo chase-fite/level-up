@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinusCircle, faSave } from '@fortawesome/free-solid-svg-icons'
+import { faMinusSquare, faSave } from '@fortawesome/free-solid-svg-icons'
 import APIManager from '../../modules/APIManager'
 import './Home.css'
 
@@ -63,7 +63,7 @@ class ActiveWorkout extends Component {
                     })}
                 </div>
                 <div>
-                    <FontAwesomeIcon icon={faMinusCircle} onClick={this.props.deleteActiveWorkout} />
+                    <FontAwesomeIcon icon={faMinusSquare} onClick={this.props.deleteActiveWorkout} />
                     <FontAwesomeIcon icon={faSave} onClick={this.saveActiveWorkout} />
                 </div>
             </>
