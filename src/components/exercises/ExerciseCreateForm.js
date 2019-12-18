@@ -11,7 +11,6 @@ class ExerciseEditForm extends Component {
         setSelectArray: [],
         setInputArray: [1],
         format: "reps-lbs",
-        type: "",
         name: ""
     }
 
@@ -45,7 +44,7 @@ class ExerciseEditForm extends Component {
     saveExercise = () => {
 
         let planString = ""
-        if (this.state.format === "min" || this.state.format === "sec") {
+        if (this.state.format === "min" || this.state.format === "sec" || this.state.format.split('-')[1] === "bodyweight") {
             for(let property in this.refs) {
                 if(this.refs[property].value && this.state.name !== "") {
                     if (property.toString().includes("firstInput")) {
@@ -79,7 +78,7 @@ class ExerciseEditForm extends Component {
 
         const newExercise = {
             workoutId: 1,
-            type: this.state.format.split('-')[0],
+            format: this.state.format,
             name: this.state.name,
             plan: planString
         }
@@ -107,7 +106,7 @@ class ExerciseEditForm extends Component {
                     <label>Format</label>
                     <select id="format" onChange={this.handleFieldChange}>
                         <option value="reps-lbs">repetitions with weight: pounds</option>
-                        <option value="reps-kgs">repetitions with weight: kilograms</option>
+                        <option value="reps-bodyweight">repetitions with weight: bodyweight</option>
                         <option value="reps-min">repetitions within time: minutes</option>
                         <option value="reps-sec">repetitions within time: seconds</option>
                         <option value="min-reps">time to achieve repetitions: minutes</option>
@@ -120,16 +119,24 @@ class ExerciseEditForm extends Component {
                     this.state.setInputArray.map((num, indx) => {
                         return (
                             <div key={indx} className="ecf-input-container">
-                                <div>Set {num}: </div>
+                                <div>Set {num}:&nbsp;</div>
                                 <input ref={`firstInput-${indx + 1}`}></input>
-                                <div>{this.state.format.split('-')[0]}, </div>
-                                {(this.state.format === "min" || this.state.format === 'sec')
+                                <div>&nbsp;{this.state.format.split('-')[0]}</div>
+                                {(this.state.format === "min" || this.state.format === 'sec' || this.state.format.split('-')[1] === "bodyweight")
                                     ?
                                     <></>
                                     :
                                     <>
-                                        <input ref={`secondInput-${indx}`}></input>
-                                        <div>{this.state.format.split('-')[1]}</div>
+                                        {(this.state.format.includes('bodyweight'))
+                                        ?
+                                        <div>,&nbsp;bodyweight</div>
+                                        :
+                                        <>
+                                            <div>,&nbsp;</div>
+                                            <input ref={`secondInput-${indx}`}></input>
+                                            <div>&nbsp;{this.state.format.split('-')[1]}</div>
+                                        </>
+                                        }
                                     </>
                                 }
                             </div>

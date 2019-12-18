@@ -5,30 +5,27 @@ import './Exercises.css'
 import ExerciseCreateForm from './ExerciseCreateForm'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+import ExerciseEdit from './ExerciseEdit'
 
 class ExerciseList extends Component {
   state = {
     exercises: [],
-    createMode: false
+    createMode: false,
+    editMode: false,
+    editEntityId: 0,
   }
 
 
   componentDidMount() {
     APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
       .then(results1 => {
-        APIManager.get(`workouts?userId=1&_embed=exercises&_sort=name`)
-        .then(results2 => {
-          let tempArray = []
-          results1.forEach(obj => {
-            obj.exercises.forEach(exercise => tempArray.push(exercise))
-          })
-          results2.forEach(obj => {
-            obj.exercises.forEach(exercise => tempArray.push(exercise))
-          })
-          tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
-          this.setState({
-            exercises: tempArray
-          })
+        let tempArray = []
+        results1.forEach(obj => {
+          obj.exercises.forEach(exercise => tempArray.push(exercise))
+        })
+        tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
+        this.setState({
+          exercises: tempArray
         })
       })
   }
@@ -48,20 +45,44 @@ class ExerciseList extends Component {
   createModeOffWithGet = () => {
     APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
       .then(results1 => {
-        APIManager.get(`workouts?userId=1&_embed=exercises&_sort=name`)
-        .then(results2 => {
-          let tempArray = []
-          results1.forEach(obj => {
-            obj.exercises.forEach(exercise => tempArray.push(exercise))
-          })
-          results2.forEach(obj => {
-            obj.exercises.forEach(exercise => tempArray.push(exercise))
-          })
-          tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
-          this.setState({
-            exercises: tempArray,
-            createMode: false
-          })
+        let tempArray = []
+        results1.forEach(obj => {
+          obj.exercises.forEach(exercise => tempArray.push(exercise))
+        })
+        tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
+        this.setState({
+          exercises: tempArray,
+          createMode: false
+        })
+      })
+  }
+
+  editModeOn = (id) => {
+    this.setState({
+      editMode: true,
+      editEntityId: id
+    })
+  }
+
+  editModeOff = () => {
+    this.setState({
+      editMode: false,
+      editEntityId: 0
+    })
+  }
+
+  editModeOffWithGet = () => {
+    APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
+      .then(results => {
+        let tempArray = []
+        results.forEach(obj => {
+          obj.exercises.forEach(exercise => tempArray.push(exercise))
+        })
+        tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
+        this.setState({
+          exercises: tempArray,
+          editMode: false,
+          editEntityId: 0
         })
       })
   }
@@ -72,24 +93,37 @@ class ExerciseList extends Component {
         {(this.state.createMode === false)
           ?
           <>
-          <FontAwesomeIcon icon={faPlusSquare} onClick={this.createModeOn} />
+            <FontAwesomeIcon icon={faPlusSquare} onClick={this.createModeOn} />
             <div className="el-exercise-card">
-              {this.state.exercises.map(exercise => {
+              {this.state.exercises.map((exercise, indx) => {
                 return (
-                  <ExerciseCard
-                    key={exercise.id}
-                    exercise={exercise}
-                  />
+                  <div key={indx}>
+                    {(this.state.editMode === true && this.state.editEntityId === exercise.id)
+                      ?
+                      <ExerciseEdit
+                        key={exercise.id}
+                        exercise={exercise}
+                        editModeOff={this.editModeOff}
+                        editModeOffWithGet={this.editModeOffWithGet}
+                      />
+                      :
+                      <ExerciseCard
+                        key={exercise.id}
+                        exercise={exercise}
+                        editModeOn={this.editModeOn}
+                      />
+                    }
+                  </div>
                 )
               })}
             </div>
           </>
           :
           <ExerciseCreateForm
-              createModeOff={this.createModeOff}
-              createModeOffWithGet={this.createModeOffWithGet}
+            createModeOff={this.createModeOff}
+            createModeOffWithGet={this.createModeOffWithGet}
           />
-          }
+        }
       </>
     )
   }
