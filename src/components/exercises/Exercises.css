@@ -25,3 +25,11 @@
     padding: 5px;
     width: 200px;
 }
+
+.ex-label-input-pair {
+    display: flex;
+}
+
+.ecf-input-container {
+    display: flex;
+}

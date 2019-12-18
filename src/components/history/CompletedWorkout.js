@@ -11,7 +11,7 @@ class CompletedWorkout extends Component {
     }
 
     componentDidMount() {
-        APIManager.get(`workouts?_embed=exercises&userId=1`)
+        APIManager.get(`workouts?_embed=exercises&userId=2`)
             .then(workoutTemplatesR => {
 
                 // gets the workout template that matches the completed workout

@@ -11,7 +11,7 @@ class History extends Component {
   }
 
   componentDidMount() {
-    APIManager.get(`completedWorkouts?userId=1&_sort=date&_order=desc&_embed=results&_expand=workout`)
+    APIManager.get(`completedWorkouts?userId=2&_sort=date&_order=desc&_embed=results&_expand=workout`)
       .then(completedWorkoutsR => {
         let temp = completedWorkoutsR.filter(workout => {
           return workout.active === false
@@ -39,7 +39,7 @@ class History extends Component {
   }
 
   editModeOff = () => {
-    APIManager.get(`completedWorkouts?userId=1&_sort=date&_order=desc&_embed=results&_expand=workout`)
+    APIManager.get(`completedWorkouts?userId=2&_sort=date&_order=desc&_embed=results&_expand=workout`)
       .then(completedWorkoutsR => {
         let temp = completedWorkoutsR.filter(workout => {
           return workout.active === false
