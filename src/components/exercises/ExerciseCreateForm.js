@@ -77,7 +77,7 @@ class ExerciseEditForm extends Component {
         }
 
         const newExercise = {
-            workoutId: 1,
+            workoutId: 5,
             format: this.state.format,
             name: this.state.name,
             plan: planString

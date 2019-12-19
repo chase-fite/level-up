@@ -5,10 +5,17 @@ import APIManager from '../../modules/APIManager'
 import WCExerciseList from './WCExerciseList'
 import '../exercises/Exercises.css'
 
-class WorkoutCreate extends Component {
+class WorkoutEdit extends Component {
 
     state = {
-        addedExercises: []
+        addedExercises: [],
+        removedExercises: []
+    }
+
+    componentDidMount() {
+        this.setState({
+            addedExercises: this.props.workout.exercises
+        })
     }
 
     addExercise = exercise => {
@@ -23,31 +30,37 @@ class WorkoutCreate extends Component {
         const exerciseList = this.state.addedExercises.filter(e => {
             return e.id !== exercise.id
         })
+        const removedExerciseList = this.state.removedExercises
+        removedExerciseList.push(exercise)
         this.setState({
             addedExercises: exerciseList,
+            removedExercises: removedExerciseList
         })
     }
 
     // need logged in user id here
-    createWorkout = () => {
+    saveWorkout = () => {
         const newWorkout = {
+            id: this.props.workout.id,
             userId: 2,
             name: this.refs['workoutName'].value
         }
-        APIManager.post(`workouts`, newWorkout)
+        APIManager.update(`workouts`, newWorkout)
         .then(workout => {
+            let promiseArrayRemoveEx = []
+            this.state.removedExercises.forEach(exercise => {
+                let updatedExercise = exercise
+                updatedExercise.workoutId = 5
+                promiseArrayRemoveEx.push(APIManager.update(`exercises`, updatedExercise))
+            })
             const promiseArray = []
             this.state.addedExercises.forEach(exercise => {
                 let newExObj = exercise
-                newExObj = {
-                    workoutId: workout.id,
-                    format: exercise.format,
-                    name: exercise.name,
-                    plan: exercise.plan
-                }
-                promiseArray.push(APIManager.post(`exercises`, newExObj))
+                newExObj.workoutId = workout.id
+                promiseArray.push(APIManager.update(`exercises`, newExObj))
             })
-            Promise.all(promiseArray).then(this.props.createModeOffWithGet)
+            promiseArray.concat(promiseArrayRemoveEx)
+            Promise.all(promiseArray).then(this.props.editModeOffWithGet)
         })
     }
 
@@ -56,10 +69,10 @@ class WorkoutCreate extends Component {
             <>
                 <div>
                     <label>Workout Name</label>
-                    <input type="text" ref={`workoutName`}></input>
+                    <input type="text" ref={`workoutName`} defaultValue={this.props.workout.name}></input>
                 </div>
-                <FontAwesomeIcon icon={faMinusCircle} onClick={this.props.createModeOff}/>
-                <FontAwesomeIcon icon={faSave} onClick={this.createWorkout}/>
+                <FontAwesomeIcon icon={faMinusCircle} onClick={this.props.editModeOff}/>
+                <FontAwesomeIcon icon={faSave} onClick={this.saveWorkout}/>
                 <label>Added Exercises:</label>
                 <div className="el-exercise-card">
                     {this.state.addedExercises.map((exercise, indx) => {
@@ -83,4 +96,4 @@ class WorkoutCreate extends Component {
     }
 }
 
-export default WorkoutCreate
+export default WorkoutEdit

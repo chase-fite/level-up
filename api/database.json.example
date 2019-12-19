@@ -23,7 +23,7 @@
     {
       "id": 1,
       "userId": 1,
-      "name": "storage"
+      "name": "unassigned"
     },
     {
       "id": 2,
@@ -43,12 +43,12 @@
     {
       "id": 5,
       "userId": 2,
-      "name": "storage"
+      "name": "unassigned"
     },
     {
       "id": 6,
       "userId": 3,
-      "name": "storage"
+      "name": "unassigned"
     }
   ],
   "exercises": [
