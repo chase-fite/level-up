@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons'
-import './Exercises.css'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
-class ExerciseCard extends Component {
+class WCExerciseCard extends Component {
 
     render() {
         return (
@@ -12,11 +11,11 @@ class ExerciseCard extends Component {
                 {this.props.exercise.plan.split('--').map((set, indx) => {
                     return <div key={indx}>{set}</div>
                 })}
-                <FontAwesomeIcon icon={faEdit} onClick={() => this.props.editModeOn(this.props.exercise.id)} />
-                <FontAwesomeIcon icon={faTimes} onClick={() => this.props.deleteExercise(this.props.exercise.id)} />
+                <FontAwesomeIcon icon={faPlusCircle} onClick={() => {
+                    this.props.addExercise(this.props.exercise)}} />
             </div>
         )
     }
 }
 
-export default ExerciseCard
+export default WCExerciseCard
