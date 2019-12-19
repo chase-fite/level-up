@@ -54,7 +54,7 @@ class WorkoutCard extends Component {
                 <div>
                     <FontAwesomeIcon id={this.props.workout.id} icon={faCheckCircle} onClick={this.setActiveWorkout} />
                     <FontAwesomeIcon icon={faTimes} onClick={() => this.props.deleteWorkout(this.props.workout)} />
-                    <FontAwesomeIcon icon={faEdit} />
+                    <FontAwesomeIcon icon={faEdit} onClick={() => this.props.editModeOn(this.props.workout.id)} />
                 </div>
             </>
 

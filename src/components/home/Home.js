@@ -45,14 +45,14 @@ class Home extends Component {
   }
 
   clearActiveWorkout = () => {
-    const savedWorkout = {
+    const completedWorkout = {
       id: this.state.activeWorkout.id,
       userId: this.state.activeWorkout.userId,
       workoutId: this.state.activeWorkout.workoutId,
       date: this.state.activeWorkout.date,
       active: false
     }
-    APIManager.update(`completedWorkouts`, savedWorkout)
+    APIManager.update(`completedWorkouts`, completedWorkout)
     this.setState({
       activeWorkout: {
         workout: {
@@ -67,14 +67,21 @@ class Home extends Component {
   render() {
     return (
       <>
-        <ActiveWorkout
-          key={this.state.activeWorkout.id}
-          activeWorkout={this.state.activeWorkout}
-          exercises={this.state.exercises}
-          deleteActiveWorkout={this.deleteActiveWorkout}
-          clearActiveWorkout={this.clearActiveWorkout}
-        />
-      </>
+      {(this.state.activeWorkout.workout.name === "")
+        ?
+        <></>
+        :
+        <>
+          <ActiveWorkout
+            key={this.state.activeWorkout.id}
+            activeWorkout={this.state.activeWorkout}
+            exercises={this.state.exercises}
+            deleteActiveWorkout={this.deleteActiveWorkout}
+            clearActiveWorkout={this.clearActiveWorkout}
+          />
+        </>
+      }
+    </>
     )
   }
 }
