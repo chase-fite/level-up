@@ -28,10 +28,10 @@ class WorkoutCreate extends Component {
         })
     }
 
-    // need logged in user id here
     createWorkout = () => {
+        const creds = JSON.parse(localStorage.getItem("credentials"))
         const newWorkout = {
-            userId: 2,
+            userId: creds.loggedInUserId,
             name: this.refs['workoutName'].value
         }
         APIManager.post(`workouts`, newWorkout)

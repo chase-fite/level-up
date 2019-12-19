@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { faSave, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 import APIManager from '../../modules/APIManager'
 
 class CWEditForm extends Component {
@@ -95,7 +95,7 @@ class CWEditForm extends Component {
                 </div>
                 <div>
                     <FontAwesomeIcon icon={faSave} onClick={this.saveCompletedWorkout} />
-                    <FontAwesomeIcon icon={faWindowClose} onClick={this.props.editModeOff} />
+                    <FontAwesomeIcon icon={faMinusCircle} onClick={this.props.editModeOff} />
                 </div>
             </>
         )
