@@ -11,7 +11,8 @@ class CWEditForm extends Component {
     }
     
     componentDidMount() {
-        APIManager.get(`workouts?_embed=exercises&userId=2`)
+        const creds = JSON.parse(localStorage.getItem("credentials"))
+        APIManager.get(`workouts?_embed=exercises&userId=${creds.loggedInUserId}`)
             .then(workoutTemplatesR => {
 
                 // gets the workout template that matches the completed workout

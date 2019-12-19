@@ -6,10 +6,6 @@ import './Exercises.css'
 
 class ExerciseEdit extends Component {
 
-    componentDidMount() {
-        
-    }
-
     saveExercise = () => {
         let planString = ""
         if (this.props.exercise.format === "min" || this.props.exercise.format === "sec") {

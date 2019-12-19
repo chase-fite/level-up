@@ -15,7 +15,8 @@ class WorkoutList extends Component {
 
 
   componentDidMount() {
-    APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
+    const creds = JSON.parse(localStorage.getItem("credentials"))
+    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
       .then(workouts => {
         const filteredWorkouts = workouts.filter(workout => workout.name !== "unassigned")
         this.setState({
@@ -37,7 +38,8 @@ class WorkoutList extends Component {
   }
 
   createModeOffWithGet = () => {
-    APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
+    const creds = JSON.parse(localStorage.getItem("credentials"))
+    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
       .then(workouts => {
         const filteredWorkouts = workouts.filter(workout => workout.name !== "unassigned")
         this.setState({
@@ -61,7 +63,8 @@ class WorkoutList extends Component {
   }
 
   editModeOffWithGet = () => {
-    APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
+    const creds = JSON.parse(localStorage.getItem("credentials"))
+    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
       .then(workouts => {
         const filteredWorkouts = workouts.filter(workout => workout.name !== "unassigned")
         this.setState({
@@ -73,9 +76,10 @@ class WorkoutList extends Component {
   }
 
   deleteWorkout = workout => {
+    const creds = JSON.parse(localStorage.getItem("credentials"))
     APIManager.delete(`workouts/${workout.id}`)
       .then(() => {
-        APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
+        APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
           .then(workouts => {
             const filteredWorkouts = workouts.filter(workout => workout.name !== "unassigned")
             this.setState({
@@ -124,7 +128,6 @@ class WorkoutList extends Component {
         )
     }
   }
-
 
   render() {
     return (

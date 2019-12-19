@@ -14,7 +14,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    APIManager.get(`completedWorkouts?userId=2&_expand=workout`)
+    const creds = JSON.parse(localStorage.getItem("credentials"))
+    APIManager.get(`completedWorkouts?userId=${creds.loggedInUserId}&_expand=workout`)
       .then(completedWorkoutsR => {
         let temp = completedWorkoutsR.filter(completedWorkout => {
           return completedWorkout.active === true

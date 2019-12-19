@@ -17,13 +17,13 @@ class WorkoutCard extends Component {
     }
 
     setActiveWorkout = () => {
-        const loggedInUserId = Number(localStorage.getItem("credentials"))
+        const creds = JSON.parse(localStorage.getItem("credentials"))
 
         const date = new Date()
         date.toDateString()
 
         const newWorkout = {
-            "userId": loggedInUserId,
+            "userId": creds.loggedInUserId,
             "workoutId": this.props.workout.id,
             "date": date,
             "active": true
