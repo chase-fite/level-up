@@ -11,7 +11,8 @@ class WCExerciseList extends Component {
 
 
     componentDidMount() {
-        APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
+        const creds = JSON.parse(localStorage.getItem("credentials"))
+        APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
             .then(results1 => {
                 let tempArray = []
                 results1.forEach(obj => {

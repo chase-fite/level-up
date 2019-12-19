@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Home from './home/Home'
 import WorkoutList from './workouts/WorkoutList'
 import ExerciseList from './exercises/ExerciseList'
 import History from './history/History'
+import Login from './auth/Login'
+import Register from './auth/Register'
 
 class ApplicationViews extends Component {
     render() {
@@ -16,13 +18,41 @@ class ApplicationViews extends Component {
                     return <Home />
                 }} />
                 <Route exact path="/workouts" render={(props) => {
-                    return <WorkoutList {...props} />
+                    if (this.props.isAuthenticated()) {
+                        return <WorkoutList {...props} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/exercises" render={(props) => {
-                    return <ExerciseList />
+                    if (this.props.isAuthenticated()) {
+                        return <ExerciseList />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/history" render={(props) => {
-                    return <History />
+                    if (this.props.isAuthenticated()) {
+                        return <History />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }} />
+                <Route exact path="/login" render={(props) => {
+                    return (
+                        <Login 
+                            {...props}
+                            {...this.props}
+                        />
+                    )
+                }} />
+                <Route exact path="/register" render={(props) => {
+                    return (
+                        <Register 
+                            {...props}
+                            {...this.props}
+                        />
+                    )
                 }} />
             </>
         )

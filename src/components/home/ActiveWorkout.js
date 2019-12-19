@@ -6,14 +6,6 @@ import './Home.css'
 
 class ActiveWorkout extends Component {
 
-    state = {
-
-    }
-
-    componentDidMount() {
-
-    }
-
     saveActiveWorkout = () => {
         this.props.exercises.forEach(exercise => {
             let resultString = ""
