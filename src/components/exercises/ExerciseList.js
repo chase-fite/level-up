@@ -87,6 +87,16 @@ class ExerciseList extends Component {
       })
   }
 
+  deleteExercise = id => {
+    APIManager.delete(`exercises/${id}`)
+    .then(() => {
+      const newExerciseList = this.state.exercises.filter(exercise => exercise.id !== id)
+      this.setState({
+        exercises: newExerciseList
+      })
+    })
+  }
+
   render() {
     return (
       <>
@@ -111,6 +121,7 @@ class ExerciseList extends Component {
                         key={exercise.id}
                         exercise={exercise}
                         editModeOn={this.editModeOn}
+                        deleteExercise={this.deleteExercise}
                       />
                     }
                   </div>

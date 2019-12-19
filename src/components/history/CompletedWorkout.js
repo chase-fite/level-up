@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinusCircle, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faEdit } from '@fortawesome/free-solid-svg-icons'
 import './History.css'
 
 class CompletedWorkout extends Component {
@@ -83,56 +83,12 @@ class CompletedWorkout extends Component {
                     })}
                 </div>
                 <div>
-                    <FontAwesomeIcon icon={faMinusCircle} onClick={this.deleteCompletedWorkout} />
                     <FontAwesomeIcon icon={faEdit} onClick={() => {
                         this.props.editModeOn(this.props.completedWorkout.id)}}
                     />
+                    <FontAwesomeIcon icon={faTimes} onClick={this.deleteCompletedWorkout} />
                 </div>
             </>
-
-
-
-
-
-
-
-
-
-
-            // <Card className="workout-card border-primary mb-3">
-            //     <Card.Header className="text-center">{this.props.completedWorkout.workout.name} - {this.convertDateTimeFromISO(this.props.completedWorkout.date).toDateString()}
-            //     </Card.Header>
-            //     <Container className="con-exercises">
-            //         <Row noGutters={true}>
-            //             {this.state.exerciseList.map((exercise, exIndx) => {
-            //                 return (
-            //                     <Col md={4} key={exercise.id}>
-            //                         <Card className="exercise-plan text-primary">
-            //                             <Card.Body>
-            //                                 <div className="card-inner-container">
-            //                                     <div className="left-inner-container">
-            //                                         <div className="underline">{exercise.name}</div>
-            //                                         {exercise.plan.split('--').map((set, indx) => {
-            //                                             return <div key={indx}>{set}</div>
-            //                                         })} 
-            //                                     </div>
-            //                                     <div>
-            //                                         <div className="result-color underline">results</div>
-            //                                         {this.state.resultList[exIndx].performance
-            //                                             .split('--').map((result, indx) => {
-            //                                                 return <div className="results" key={indx}>{result}</div>
-            //                                         })}
-            //                                     </div>
-            //                                     {/* <FontAwesomeIcon className="cw-edit-icon" icon={faEdit} onClick={this.toggleEditMode} /> */}
-            //                                 </div>  
-            //                             </Card.Body>                         
-            //                         </Card>
-            //                     </Col>
-            //                 )
-            //             })}
-            //         </Row>
-            //     </Container>
-            // </Card>
         )
     }
 }
