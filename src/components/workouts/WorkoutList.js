@@ -45,6 +45,19 @@ class WorkoutList extends Component {
       })
   }
 
+  deleteWorkout = workout => {
+    APIManager.delete(`workouts/${workout.id}`)
+    .then(() => {
+      APIManager.get(`workouts?userId=2&_embed=exercises&_sort=name`)
+      .then(workouts => {
+        const filteredWorkouts = workouts.filter(workout => workout.name !== "storage")
+        this.setState({
+          workouts: filteredWorkouts
+        })
+      })
+    })
+  }
+
   render() {
     return (
       <>
@@ -62,6 +75,7 @@ class WorkoutList extends Component {
                 <WorkoutCard
                   key={workout.id}
                   workout={workout}
+                  deleteWorkout={this.deleteWorkout}
                   {...this.props}
                 />
               )

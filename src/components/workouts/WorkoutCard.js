@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faCheckCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faCheckCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 import APIManager from '../../modules/APIManager'
 import './Workouts.css'
 
@@ -53,7 +53,7 @@ class WorkoutCard extends Component {
                 </div>
                 <div>
                     <FontAwesomeIcon id={this.props.workout.id} icon={faCheckCircle} onClick={this.setActiveWorkout} />
-                    <FontAwesomeIcon icon={faMinusCircle} />
+                    <FontAwesomeIcon icon={faTimes} onClick={() => this.props.deleteWorkout(this.props.workout)} />
                     <FontAwesomeIcon icon={faEdit} />
                 </div>
             </>
