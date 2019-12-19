@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinusCircle, faSave } from '@fortawesome/free-solid-svg-icons'
 import APIManager from '../../modules/APIManager'
 import WCExerciseList from './WCExerciseList'
-import '../exercises/Exercises.css'
 
 class WorkoutEdit extends Component {
 
@@ -38,11 +37,11 @@ class WorkoutEdit extends Component {
         })
     }
 
-    // need logged in user id here
     saveWorkout = () => {
+        const creds = JSON.parse(localStorage.getItem("credentials"))
         const newWorkout = {
             id: this.props.workout.id,
-            userId: 2,
+            userId: creds.loggedInUserId,
             name: this.refs['workoutName'].value
         }
         APIManager.update(`workouts`, newWorkout)

@@ -42,11 +42,10 @@ class ExerciseEditForm extends Component {
     }
 
     saveExercise = () => {
-
         let planString = ""
-        if (this.state.format === "min" || this.state.format === "sec" || this.state.format.split('-')[1] === "bodyweight") {
-            for(let property in this.refs) {
-                if(this.refs[property].value && this.state.name !== "") {
+        if (this.state.format === "min" || this.state.format === "sec") {
+            for (let property in this.refs) {
+                if (this.refs[property].value && this.state.name !== "") {
                     if (property.toString().includes("firstInput")) {
                         planString += `set ${property.toString().split('-')[1]}: ${this.refs[property].value} ${this.state.format}--`
                     }
@@ -56,11 +55,22 @@ class ExerciseEditForm extends Component {
                 }
             }
             planString = planString.slice(0, (planString.length - 2))
+        } else if (this.state.format === "reps-bodyweight") {
+            for (let property in this.refs) {
+                if (this.refs[property].value && this.state.name !== "") {
+                    if (property.toString().includes("firstInput")) {
+                        planString += `set ${property.toString().split('-')[1]}: ${this.refs[property].value} ${this.state.format.split('-')[0]}, ${this.state.format.split('-')[1]}--`
+                    }
+                } else {
+                    window.alert("Please fill in all input fields 1")
+                    break
+                }
+            }
         } else {
             let tempString = ""
-            for(let property in this.refs) {
-                if(this.refs[property].value && this.state.name !== "") {
-                    if(property.toString().includes('firstInput')) {
+            for (let property in this.refs) {
+                if (this.refs[property].value && this.state.name !== "") {
+                    if (property.toString().includes('firstInput')) {
                         tempString += `set ${property.toString().split('-')[1]}: ${this.refs[property].value} ${this.state.format.split('-')[0]}, `
                     }
                     if (property.toString().includes('secondInput')) {
@@ -69,21 +79,22 @@ class ExerciseEditForm extends Component {
                         tempString = ""
                     }
                 } else {
-                    window.alert("Please fill in all input fields 2")
+                    window.alert("Please fill in all input fields")
                     break
                 }
             }
             planString = planString.slice(0, (planString.length - 2))
         }
 
+        const creds = JSON.parse(localStorage.getItem("credentials"))
         const newExercise = {
-            workoutId: 5,
+            workoutId: creds.storageWorkoutId,
             format: this.state.format,
             name: this.state.name,
             plan: planString
         }
         APIManager.post('exercises', newExercise)
-        .then(this.props.createModeOffWithGet)
+            .then(this.props.createModeOffWithGet)
     }
 
     render() {
@@ -128,14 +139,14 @@ class ExerciseEditForm extends Component {
                                     :
                                     <>
                                         {(this.state.format.includes('bodyweight'))
-                                        ?
-                                        <div>,&nbsp;bodyweight</div>
-                                        :
-                                        <>
-                                            <div>,&nbsp;</div>
-                                            <input ref={`secondInput-${indx}`}></input>
-                                            <div>&nbsp;{this.state.format.split('-')[1]}</div>
-                                        </>
+                                            ?
+                                            <div>,&nbsp;bodyweight</div>
+                                            :
+                                            <>
+                                                <div>,&nbsp;</div>
+                                                <input ref={`secondInput-${indx}`}></input>
+                                                <div>&nbsp;{this.state.format.split('-')[1]}</div>
+                                            </>
                                         }
                                     </>
                                 }
