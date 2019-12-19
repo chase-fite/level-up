@@ -66,6 +66,7 @@ class ExerciseEditForm extends Component {
                     break
                 }
             }
+            planString = planString.slice(0, (planString.length - 2))
         } else {
             let tempString = ""
             for (let property in this.refs) {
