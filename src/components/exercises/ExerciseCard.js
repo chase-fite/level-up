@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons'
 import './Exercises.css'
 
 class ExerciseCard extends Component {
@@ -13,6 +13,7 @@ class ExerciseCard extends Component {
                     return <div key={indx}>{set}</div>
                 })}
                 <FontAwesomeIcon icon={faEdit} onClick={() => this.props.editModeOn(this.props.exercise.id)} />
+                <FontAwesomeIcon icon={faTimes} onClick={() => this.props.deleteExercise(this.props.exercise.id)} />
             </div>
 
 
