@@ -1,17 +1,6 @@
-/* .exercise-card {
-    width: 250px !important;
-    height: 195px !important;
-    overflow: hidden;
+.ex-form-container {
+    margin-left: 5px;
 }
-
-.exercise-con {
-    margin: 5px 10px 0px;
-}
-
-.exercise-name {
-    color: #007bff;
-    text-decoration: underline;
-} */
 
 .el-exercise-card {
     display: flex;
@@ -26,12 +15,36 @@
     min-width: 200px;
 }
 
+.ex-label-input-container {
+    display: flex;
+}
+
+.ex-input-container {
+    flex-direction: column;
+    margin-left: 34px;
+}
+
+.excr-input {
+    height: 24px;
+    width: 277px;
+    margin-bottom: 24px;
+}
+
+.excr-label {
+    margin-bottom: 24px;
+}
+
+.excr-set-input {
+    height: 24px;
+}
+
 .ex-label-input-pair {
     display: flex;
 }
 
 .ecf-input-container {
     display: flex;
+    margin-bottom: 24px;
 }
 
 .ee-input-container {
@@ -42,4 +55,25 @@
     width: 50px;
     height: 24px;
     margin-bottom: 24px;
+}
+
+.ec-x {
+    margin-left: 34px;
+}
+
+.el-hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.el-plus {
+    margin-left: 5px;
+}
+
+.ee-minus {
+    margin-left: 34px;
+}
+
+.ec-minus {
+    margin-left: 34px;
 }

@@ -12,8 +12,8 @@ class ExerciseCard extends Component {
                 {this.props.exercise.plan.split('--').map((set, indx) => {
                     return <div key={indx}>{set}</div>
                 })}
-                <FontAwesomeIcon icon={faEdit} onClick={() => this.props.editModeOn(this.props.exercise.id)} />
-                <FontAwesomeIcon icon={faTimes} onClick={() => this.props.deleteExercise(this.props.exercise.id)} />
+                <FontAwesomeIcon icon={faEdit} className="fa-lg ec-edit" onClick={() => this.props.editModeOn(this.props.exercise.id)} />
+                <FontAwesomeIcon icon={faTimes} className="fa-lg ec-x" onClick={() => this.props.deleteExercise(this.props.exercise.id)} />
             </div>
         )
     }

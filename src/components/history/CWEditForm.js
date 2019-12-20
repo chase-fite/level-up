@@ -94,9 +94,10 @@ class CWEditForm extends Component {
                     })}
                 </div>
                 <div>
-                    <FontAwesomeIcon icon={faSave} onClick={this.saveCompletedWorkout} />
-                    <FontAwesomeIcon icon={faMinusCircle} onClick={this.props.editModeOff} />
+                    <FontAwesomeIcon icon={faSave} className="fa-lg cwe-save" onClick={this.saveCompletedWorkout} />
+                    <FontAwesomeIcon icon={faMinusCircle} className="fa-lg cwe-minus" onClick={this.props.editModeOff} />
                 </div>
+                <hr className="cw-hr" />
             </>
         )
     }

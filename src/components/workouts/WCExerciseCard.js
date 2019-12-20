@@ -11,7 +11,7 @@ class WCExerciseCard extends Component {
                 {this.props.exercise.plan.split('--').map((set, indx) => {
                     return <div key={indx}>{set}</div>
                 })}
-                <FontAwesomeIcon icon={faPlusCircle} onClick={() => {
+                <FontAwesomeIcon icon={faPlusCircle} className="fa-lg" onClick={() => {
                     this.props.addExercise(this.props.exercise)}} />
             </div>
         )

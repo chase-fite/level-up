@@ -55,13 +55,14 @@ class WorkoutCreate extends Component {
         return (
             <>
                 <div>
-                    <label>Workout Name</label>
+                    <label>Workout Name&nbsp;</label>
                     <input type="text" ref={`workoutName`}></input>
                 </div>
-                <FontAwesomeIcon icon={faMinusCircle} onClick={this.props.createModeOff}/>
-                <FontAwesomeIcon icon={faSave} onClick={this.createWorkout}/>
-                <label>Added Exercises:</label>
-                <div className="el-exercise-card">
+                <hr className="wc-top-hr" />
+                <label>Added Exercises</label>
+                <FontAwesomeIcon className="fa-lg wc-minus" icon={faMinusCircle} onClick={this.props.createModeOff}/>
+                <FontAwesomeIcon className="fa-lg wc-save" icon={faSave} onClick={this.createWorkout}/>
+                <div className="wc-exercise-card">
                     {this.state.addedExercises.map((exercise, indx) => {
                         return (
                             <div key={indx} className="ec-exercise-container">
@@ -69,12 +70,12 @@ class WorkoutCreate extends Component {
                                 {exercise.plan.split('--').map((set, indx) => {
                                     return <div key={indx}>{set}</div>
                                 })}
-                                <FontAwesomeIcon icon={faMinusCircle} onClick={() => this.removeExercise(exercise)} />
+                                <FontAwesomeIcon icon={faMinusCircle} className="fa-lg" onClick={() => this.removeExercise(exercise)} />
                             </div>
                         )
                     })}
                 </div>
-                <hr />
+                <hr className="wc-bottom-hr" />
                 <WCExerciseList
                     addExercise={this.addExercise}
                 />

@@ -4,7 +4,7 @@ import APIManager from '../../modules/APIManager'
 import './Exercises.css'
 import ExerciseCreateForm from './ExerciseCreateForm'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import ExerciseEdit from './ExerciseEdit'
 
 class ExerciseList extends Component {
@@ -106,7 +106,8 @@ class ExerciseList extends Component {
         {(this.state.createMode === false)
           ?
           <>
-            <FontAwesomeIcon icon={faPlusSquare} onClick={this.createModeOn} />
+            <FontAwesomeIcon icon={faPlusCircle} className="fa-lg el-plus" onClick={this.createModeOn} />
+            <hr className="el-hr" />
             <div className="el-exercise-card">
               {this.state.exercises.map((exercise, indx) => {
                 return (

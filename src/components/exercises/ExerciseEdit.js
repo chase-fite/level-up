@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { faSave, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 import './Exercises.css'
 
 class ExerciseEdit extends Component {
@@ -93,8 +93,8 @@ class ExerciseEdit extends Component {
                         </div>
                     )
                 })}
-                <FontAwesomeIcon icon={faSave} onClick={this.saveExercise}/>
-                <FontAwesomeIcon icon={faWindowClose} onClick={this.props.editModeOff} />
+                <FontAwesomeIcon icon={faSave} className="fa-lg ee-edit" onClick={this.saveExercise}/>
+                <FontAwesomeIcon icon={faMinusCircle} className="fa-lg ee-minus" onClick={this.props.editModeOff} />
             </div>
         )
     }

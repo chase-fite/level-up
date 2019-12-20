@@ -72,22 +72,36 @@ class Register extends Component {
     render() {
         return (
             <>
-                <h1>Register</h1>
-                <div>
-                    <label>Name</label>
-                    <input type="text" id="name" onChange={this.handleFieldChange}></input>
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="text" id="email" onChange={this.handleFieldChange}></input>
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="text" id="password" onChange={this.handleFieldChange}></input>
-                </div>
-                <div>
-                    <label>Confirm Password</label>
-                    <input type="text" id="confirmPassword" onChange={this.handleFieldChange}></input>
+                <h3>Register</h3>
+                <div className="reg-label-input-container">
+                    <div className="reg-label-container">
+                        <div>Name</div>
+                        <br />
+                        <div>Email</div>
+                        <br />
+                        <div>Password</div>
+                        <br />
+                        <div>Confirm Password</div>
+                        <br />
+                    </div>
+                    <div className="reg-input-container">
+                        <div>
+                            <input type="text" className="reg-input" id="name" onChange={this.handleFieldChange}></input>
+                        </div>
+                        <br />
+                        <div>
+                            <input type="text" className="reg-input" id="email" onChange={this.handleFieldChange}></input>
+                        </div>
+                        <br />
+                        <div>
+                            <input type="text" className="reg-input" id="password" onChange={this.handleFieldChange}></input>
+                        </div>
+                        <br />
+                        <div>
+                            <input type="text" className="reg-input" id="confirmPassword" onChange={this.handleFieldChange}></input>
+                        </div>
+                        <br />
+                    </div>
                 </div>
                 <button onClick={this.handleRegister}>Register</button>
             </>

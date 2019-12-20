@@ -52,10 +52,11 @@ class WorkoutCard extends Component {
                     })}
                 </div>
                 <div>
-                    <FontAwesomeIcon id={this.props.workout.id} icon={faCheckCircle} onClick={this.setActiveWorkout} />
-                    <FontAwesomeIcon icon={faTimes} onClick={() => this.props.deleteWorkout(this.props.workout)} />
-                    <FontAwesomeIcon icon={faEdit} onClick={() => this.props.editModeOn(this.props.workout.id)} />
+                    <FontAwesomeIcon id={this.props.workout.id} className="fa-lg wc-check" icon={faCheckCircle} onClick={this.setActiveWorkout} />
+                    <FontAwesomeIcon icon={faTimes} className="fa-lg wc-x" onClick={() => this.props.deleteWorkout(this.props.workout)} />
+                    <FontAwesomeIcon icon={faEdit} className="fa-lg wc-edit" onClick={() => this.props.editModeOn(this.props.workout.id)} />
                 </div>
+                <hr className="wcard-bottom-hr" />
             </>
 
 

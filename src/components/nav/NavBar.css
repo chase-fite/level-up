@@ -14,7 +14,7 @@ header {
 .navbar-style {
     z-index: 1;
     background-color: white;
-    border: 1px solid #007bff;
+    border: 1px solid black;
     border-radius: .25rem;
     height: 60px;
     width: auto;
