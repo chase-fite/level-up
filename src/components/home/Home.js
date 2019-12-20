@@ -14,23 +14,25 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const creds = JSON.parse(localStorage.getItem("credentials"))
-    APIManager.get(`completedWorkouts?userId=${creds.loggedInUserId}&_expand=workout`)
-      .then(completedWorkoutsR => {
-        let temp = completedWorkoutsR.filter(completedWorkout => {
-          return completedWorkout.active === true
-        })
-        temp = temp[0]
-        if (temp) {
-          APIManager.get(`workouts/${temp.workoutId}?_embed=exercises`)
-            .then(workout => {
-              this.setState({
-                activeWorkout: temp,
-                exercises: workout.exercises
+    if(this.props.isAuthenticated()) {
+      const creds = JSON.parse(localStorage.getItem("credentials"))
+      APIManager.get(`completedWorkouts?userId=${creds.loggedInUserId}&_expand=workout`)
+        .then(completedWorkoutsR => {
+          let temp = completedWorkoutsR.filter(completedWorkout => {
+            return completedWorkout.active === true
+          })
+          temp = temp[0]
+          if (temp) {
+            APIManager.get(`workouts/${temp.workoutId}?_embed=exercises`)
+              .then(workout => {
+                this.setState({
+                  activeWorkout: temp,
+                  exercises: workout.exercises
+                })
               })
-            })
-        }
-      })
+          }
+        })
+    }
   }
 
   deleteActiveWorkout = () => {

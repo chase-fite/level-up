@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
+import './Auth.css'
 
 class Login extends Component {
 
@@ -47,14 +48,22 @@ class Login extends Component {
 
         return (
             <>
-                <h1>Login</h1>
-                <div>
-                    <label>Email</label>
-                    <input type="text" id="email" onChange={this.handleFieldChange}></input>
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="text" id="password" onChange={this.handleFieldChange}></input>
+                <h3>Login</h3>
+                <div className="login-container">
+                    <div className="login-label-container">
+                        <div>Email</div>
+                        <br />
+                        <div>Password</div>
+                    </div>
+                    <div className="login-input-container">
+                        <div>
+                            <input type="text" className="login-input" id="email" onChange={this.handleFieldChange}></input>
+                        </div>
+                        <br />
+                        <div>
+                            <input type="password" className="login-input" id="password" onChange={this.handleFieldChange}></input>
+                        </div>
+                    </div>
                 </div>
                 <button onClick={this.handleLogin}>Login</button>
             </>

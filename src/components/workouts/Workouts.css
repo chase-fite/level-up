@@ -10,3 +10,52 @@
     padding: 5px;
     width: 200px;
 }
+
+.wc-top-hr {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.wc-bottom-hr {
+    margin-bottom: 0;
+}
+
+.wc-exercise-card {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 200px;
+}
+
+.wc-minus {
+    margin-left: 34px;
+}
+
+.wc-save {
+    margin-left: 34px;
+}
+
+.wc-check {
+    margin-left: 5px;
+}
+
+.wc-x {
+    margin-left: 34px;
+}
+
+.wc-edit {
+    margin-left: 34px;
+}
+
+.wcard-bottom-hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.wl-hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.wl-plus {
+    margin-left: 5px;
+}

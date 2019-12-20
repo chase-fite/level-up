@@ -84,11 +84,12 @@ class CompletedWorkout extends Component {
                     })}
                 </div>
                 <div>
-                    <FontAwesomeIcon icon={faEdit} onClick={() => {
+                    <FontAwesomeIcon icon={faEdit} className="fa-lg cw-edit" onClick={() => {
                         this.props.editModeOn(this.props.completedWorkout.id)}}
                     />
-                    <FontAwesomeIcon icon={faTimes} onClick={this.deleteCompletedWorkout} />
+                    <FontAwesomeIcon icon={faTimes} className="fa-lg cw-x" onClick={this.deleteCompletedWorkout} />
                 </div>
+                <hr className="cw-hr" />
             </>
         )
     }

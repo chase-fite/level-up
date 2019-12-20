@@ -12,10 +12,10 @@ class ApplicationViews extends Component {
         return (
             <>
                 <Route exact path="/" render={(props) => {
-                    return <Home />
+                    return <Home isAuthenticated={this.props.isAuthenticated} {...props} {...this.props} />
                 }} />
                 <Route exact path="/home" render={(props) => {
-                    return <Home />
+                    return <Home isAuthenticated={this.props.isAuthenticated} {...props} {...this.props} />
                 }} />
                 <Route exact path="/workouts" render={(props) => {
                     if (this.props.isAuthenticated()) {

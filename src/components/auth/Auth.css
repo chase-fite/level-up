@@ -1,0 +1,33 @@
+.login-container {
+    display: flex;
+    margin-bottom: 24px;
+    margin-top: 24px;
+}
+
+.login-label-container {
+    flex-direction: column;
+}
+
+.login-input-container {
+    flex-direction: column;
+    margin-left: 34px;
+}
+
+.login-input {
+    height: 24px;
+    width: 240px;
+}
+
+.reg-label-input-container {
+    display: flex;
+    margin-top: 24px;
+}
+
+.reg-input-container {
+    margin-left: 34px;
+}
+
+.reg-input {
+    height: 24px;
+    width: 240px;
+}

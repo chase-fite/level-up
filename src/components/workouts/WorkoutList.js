@@ -2,7 +2,7 @@ import React, { Component, useImperativeHandle } from 'react'
 import WorkoutCard from './WorkoutCard'
 import WorkoutCreate from './WorkoutCreate'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import APIManager from '../../modules/APIManager'
 import WorkoutEdit from './WorkoutEdit'
 
@@ -111,7 +111,8 @@ class WorkoutList extends Component {
       default:
         return (
           <div>
-            <FontAwesomeIcon icon={faPlusSquare} onClick={this.createModeOn} />
+            <FontAwesomeIcon icon={faPlusCircle} className="fa-lg wl-plus" onClick={this.createModeOn} />
+            <hr className="wl-hr" />
             {this.state.workouts.map(workout => {
               return (
                 <WorkoutCard

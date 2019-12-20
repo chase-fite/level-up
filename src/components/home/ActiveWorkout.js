@@ -28,6 +28,11 @@ class ActiveWorkout extends Component {
     render() {
         return (
             <>
+                <div className="aw-icon-container">
+                    <FontAwesomeIcon icon={faSave} className="fa-lg aw-save" onClick={this.saveActiveWorkout} />
+                    <FontAwesomeIcon icon={faMinusCircle} className="fa-lg aw-minus" onClick={this.props.deleteActiveWorkout} />
+                </div>
+                <hr className="aw-hr" />
                 <div>{this.props.activeWorkout.workout.name}</div>
                 <div className="aw-workout-container">
                     {this.props.exercises.map(exercise => {
@@ -53,10 +58,6 @@ class ActiveWorkout extends Component {
                             </div>
                         )
                     })}
-                </div>
-                <div>
-                    <FontAwesomeIcon icon={faMinusCircle} onClick={this.props.deleteActiveWorkout} />
-                    <FontAwesomeIcon icon={faSave} onClick={this.saveActiveWorkout} />
                 </div>
             </>
 

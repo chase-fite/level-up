@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinusSquare, faSave } from '@fortawesome/free-solid-svg-icons'
+import { faMinusCircle, faSave } from '@fortawesome/free-solid-svg-icons'
 import APIManager from '../../modules/APIManager'
 import './Exercises.css'
 
@@ -101,38 +101,48 @@ class ExerciseEditForm extends Component {
     render() {
         return (
             <div className="ex-form-container">
-                <div>Create Exercise</div>
-                <div className="ex-label-input-pair">
-                    <label>Exercise Name</label>
-                    <input type="text" id="name" onChange={this.handleFieldChange}></input>
-                </div>
-                <div className="ex-label-input-pair">
-                    <label>Number of Sets</label>
-                    <select id="numOfSets" onChange={this.handleNumOfSets}>
-                        {this.state.setSelectArray.map((num, indx) => {
-                            return <option key={indx} value={num}>{num}</option>
-                        })}
-                    </select>
-                </div>
-                <div className="ex-label-input-pair">
-                    <label>Format</label>
-                    <select id="format" onChange={this.handleFieldChange}>
-                        <option value="reps-lbs">repetitions with weight: pounds</option>
-                        <option value="reps-bodyweight">repetitions with weight: bodyweight</option>
-                        <option value="reps-min">repetitions within time: minutes</option>
-                        <option value="reps-sec">repetitions within time: seconds</option>
-                        <option value="min-reps">time to achieve repetitions: minutes</option>
-                        <option value="sec-reps">time to achieve repetitions: seconds</option>
-                        <option value="min">time as a goal for set: minutes</option>
-                        <option value="sec">time as a goal for set: seconds</option>
-                    </select>
+                <div className="ex-label-input-container">
+                    <div>
+                        <div className="excr-label">Create Exercise</div>
+                        <div className="excr-label">Exercise Name</div>
+                        <div className="excr-label">Number of Sets</div>
+                        <div className="excr-label">Format</div>
+                    </div>
+                    <div className="ex-input-container">
+                        <div className="excr-input">
+                            <FontAwesomeIcon icon={faSave} className="fa-lg ec-save" onClick={this.saveExercise} />
+                            <FontAwesomeIcon icon={faMinusCircle} className="fa-lg ec-minus" onClick={this.props.createModeOff} />
+                        </div>
+                        <div>
+                            <input type="text" id="name" className="excr-input" onChange={this.handleFieldChange}></input>
+                        </div>
+                        <div>
+                            <select id="numOfSets" className="excr-input" onChange={this.handleNumOfSets}>
+                                {this.state.setSelectArray.map((num, indx) => {
+                                    return <option key={indx} value={num}>{num}</option>
+                                })}
+                            </select>
+                        </div>
+                        <div>
+                            <select id="format" className="excr-input" onChange={this.handleFieldChange}>
+                                <option value="reps-lbs">repetitions with weight: pounds</option>
+                                <option value="reps-bodyweight">repetitions with weight: bodyweight</option>
+                                <option value="reps-min">repetitions within time: minutes</option>
+                                <option value="reps-sec">repetitions within time: seconds</option>
+                                <option value="min-reps">time to achieve repetitions: minutes</option>
+                                <option value="sec-reps">time to achieve repetitions: seconds</option>
+                                <option value="min">time as a goal for set: minutes</option>
+                                <option value="sec">time as a goal for set: seconds</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 {(this.state.setInputArray !== []) ?
                     this.state.setInputArray.map((num, indx) => {
                         return (
                             <div key={indx} className="ecf-input-container">
                                 <div>Set {num}:&nbsp;</div>
-                                <input ref={`firstInput-${indx + 1}`}></input>
+                                <input className="excr-set-input" ref={`firstInput-${indx + 1}`}></input>
                                 <div>&nbsp;{this.state.format.split('-')[0]}</div>
                                 {(this.state.format === "min" || this.state.format === 'sec' || this.state.format.split('-')[1] === "bodyweight")
                                     ?
@@ -145,7 +155,7 @@ class ExerciseEditForm extends Component {
                                             :
                                             <>
                                                 <div>,&nbsp;</div>
-                                                <input ref={`secondInput-${indx}`}></input>
+                                                <input className="excr-set-input" ref={`secondInput-${indx}`}></input>
                                                 <div>&nbsp;{this.state.format.split('-')[1]}</div>
                                             </>
                                         }
@@ -157,8 +167,6 @@ class ExerciseEditForm extends Component {
                     :
                     <></>
                 }
-                <FontAwesomeIcon icon={faSave} onClick={this.saveExercise} />
-                <FontAwesomeIcon icon={faMinusSquare} onClick={this.props.createModeOff} />
             </div>
         )
     }
