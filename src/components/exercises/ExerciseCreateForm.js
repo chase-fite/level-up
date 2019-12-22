@@ -20,6 +20,8 @@ class ExerciseEditForm extends Component {
         })
     }
 
+    // i use this function to build some arrays with sequential numbers to help
+    // with sizing my dropdown selections
     createRangeArray = (size) => {
         const resultArray = []
         for (let i = 0; i < size; i++) {
@@ -41,6 +43,7 @@ class ExerciseEditForm extends Component {
         })
     }
 
+    // the format of the exercise determines how i have to build the plan string
     saveExercise = () => {
         let planString = ""
         if (this.state.format === "min" || this.state.format === "sec") {
@@ -50,7 +53,7 @@ class ExerciseEditForm extends Component {
                         planString += `set ${property.toString().split('-')[1]}: ${this.refs[property].value} ${this.state.format}--`
                     }
                 } else {
-                    window.alert("Please fill in all input fields 1")
+                    window.alert("Please fill in all input fields")
                     break
                 }
             }
@@ -62,7 +65,7 @@ class ExerciseEditForm extends Component {
                         planString += `set ${property.toString().split('-')[1]}: ${this.refs[property].value} ${this.state.format.split('-')[0]}, ${this.state.format.split('-')[1]}--`
                     }
                 } else {
-                    window.alert("Please fill in all input fields 1")
+                    window.alert("Please fill in all input fields")
                     break
                 }
             }
@@ -111,7 +114,7 @@ class ExerciseEditForm extends Component {
                     <div className="ex-input-container">
                         <div className="excr-input">
                             <FontAwesomeIcon icon={faSave} className="fa-lg ec-save" onClick={this.saveExercise} />
-                            <FontAwesomeIcon icon={faMinusCircle} className="fa-lg ec-minus" onClick={this.props.createModeOff} />
+                            <FontAwesomeIcon icon={faMinusCircle} className="fa-lg ec-minus" onClick={this.props.createModeOffWithGet} />
                         </div>
                         <div>
                             <input type="text" id="name" className="excr-input" onChange={this.handleFieldChange}></input>

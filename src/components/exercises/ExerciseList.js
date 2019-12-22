@@ -13,6 +13,7 @@ class ExerciseList extends Component {
     createMode: false,
     editMode: false,
     editEntityId: 0,
+    search: ""
   }
 
 
@@ -31,10 +32,37 @@ class ExerciseList extends Component {
       })
   }
 
+  handleSearch = evt => {
+    const stateToChange = {}
+    stateToChange[evt.target.id] = evt.target.value
+    this.setState(stateToChange)
+    const creds = JSON.parse(localStorage.getItem("credentials"))
+    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
+      .then(results1 => {
+        let tempArray = []
+        results1.forEach(obj => {
+          obj.exercises.forEach(exercise => tempArray.push(exercise))
+        })
+        tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
+        tempArray = tempArray.filter(exercise => {
+          return exercise.name.toLowerCase().includes(this.state.search.toLowerCase())
+        })
+        this.setState({
+          exercises: tempArray
+        })
+      })
+  }
+
+  clearSearchBar = () => {
+    this.refs['search-input'].value = ""
+  }
+
   createModeOn = () => {
     this.setState({
-      createMode: true
+      createMode: true,
+      search: ""
     })
+    this.clearSearchBar()
   }
 
   createModeOff = () => {
@@ -106,6 +134,11 @@ class ExerciseList extends Component {
         {(this.state.createMode === false)
           ?
           <>
+            <div className="search-container">
+              <div>Search &nbsp;</div>
+              <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
+            </div>
+            <hr className="wl-hr-below-search" />
             <FontAwesomeIcon icon={faPlusCircle} className="fa-lg el-plus" onClick={this.createModeOn} />
             <hr className="el-hr" />
             <div className="el-exercise-card">

@@ -13,6 +13,9 @@ class Home extends Component {
     exercises: []
   }
 
+  // i'm just checking to see if the user is logged in because i don't want to display
+  // an active workout if they are not. otherwise we're just setting state to the active
+  // workout if there is one
   componentDidMount() {
     if(this.props.isAuthenticated()) {
       const creds = JSON.parse(localStorage.getItem("credentials"))
@@ -35,6 +38,7 @@ class Home extends Component {
     }
   }
 
+  // delete and clear home page
   deleteActiveWorkout = () => {
     APIManager.delete(`completedWorkouts/${this.state.activeWorkout.id}`)
     this.setState({
@@ -47,6 +51,8 @@ class Home extends Component {
     })
   }
 
+  // this function is just used to set the active workout as a completed workout and clear
+  // the home page
   clearActiveWorkout = () => {
     const completedWorkout = {
       id: this.state.activeWorkout.id,

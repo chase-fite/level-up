@@ -28,6 +28,7 @@ class WorkoutCreate extends Component {
         })
     }
 
+    // create new workout, post, attach exercises to workout, and post
     createWorkout = () => {
         const creds = JSON.parse(localStorage.getItem("credentials"))
         const newWorkout = {
@@ -60,7 +61,7 @@ class WorkoutCreate extends Component {
                 </div>
                 <hr className="wc-top-hr" />
                 <label>Added Exercises</label>
-                <FontAwesomeIcon className="fa-lg wc-minus" icon={faMinusCircle} onClick={this.props.createModeOff}/>
+                <FontAwesomeIcon className="fa-lg wc-minus" icon={faMinusCircle} onClick={this.props.createModeOffWithGet}/>
                 <FontAwesomeIcon className="fa-lg wc-save" icon={faSave} onClick={this.createWorkout}/>
                 <div className="wc-exercise-card">
                     {this.state.addedExercises.map((exercise, indx) => {
