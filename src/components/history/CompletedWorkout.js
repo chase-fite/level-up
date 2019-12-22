@@ -7,7 +7,8 @@ import './History.css'
 class CompletedWorkout extends Component {
     state = {
         exerciseList: [],
-        resultList: []
+        resultList: [],
+        search: ""
     }
 
     componentDidMount() {

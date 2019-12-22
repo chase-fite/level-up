@@ -1,4 +1,4 @@
-import React, { Component, useImperativeHandle } from 'react'
+import React, { Component } from 'react'
 import WorkoutCard from './WorkoutCard'
 import WorkoutCreate from './WorkoutCreate'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,11 +9,13 @@ import WorkoutEdit from './WorkoutEdit'
 class WorkoutList extends Component {
   state = {
     workouts: [],
+    tempWorkoutContainer: [],
     mode: "",
-    editEntityId: 0
+    editEntityId: 0,
+    search: ""
   }
 
-
+  // getting the users workouts and setting state
   componentDidMount() {
     const creds = JSON.parse(localStorage.getItem("credentials"))
     APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
@@ -25,9 +27,32 @@ class WorkoutList extends Component {
       })
   }
 
+  handleSearch = (evt) => {
+    const stateToChange = {}
+    stateToChange[evt.target.id] = evt.target.value
+    this.setState(stateToChange)
+    const creds = JSON.parse(localStorage.getItem("credentials"))
+    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
+      .then(workouts => {
+        const filteredWorkouts = workouts.filter(workout => {
+          return (workout.name !== "unassigned" && workout.name.toLowerCase().includes(this.state.search.toLowerCase()))
+        })
+        this.setState({
+          workouts: filteredWorkouts
+        })
+      })
+  }
+
+  clearSearchBar = () => {
+    this.refs['search-input'].value = ""
+  }
+
+  // create and edit mode functions just used to help with view manipulation
+  // i use a get to "refresh" the page after edit
   createModeOn = () => {
     this.setState({
-      mode: 'create'
+      mode: 'create',
+      search: ""
     })
   }
 
@@ -52,7 +77,8 @@ class WorkoutList extends Component {
   editModeOn = (id) => {
     this.setState({
       mode: 'edit',
-      editEntityId: id
+      editEntityId: id,
+      search: ""
     })
   }
 
@@ -75,6 +101,13 @@ class WorkoutList extends Component {
       })
   }
 
+  handleFieldChange = (evt) => {
+    const stateToChange = {}
+    stateToChange[evt.target.id] = evt.target.value
+    this.setState(stateToChange)
+  }
+
+  // delete, get, set state
   deleteWorkout = workout => {
     const creds = JSON.parse(localStorage.getItem("credentials"))
     APIManager.delete(`workouts/${workout.id}`)
@@ -89,6 +122,7 @@ class WorkoutList extends Component {
       })
   }
 
+  // switch statement for determining view
   switchComponent = mode => {
     switch (mode) {
       case 'create':
@@ -111,20 +145,30 @@ class WorkoutList extends Component {
       default:
         return (
           <div>
+            <div className="search-container">
+              <div>Search &nbsp;</div>
+              <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
+            </div>
+            <hr className="wl-hr-below-search" />
             <FontAwesomeIcon icon={faPlusCircle} className="fa-lg wl-plus" onClick={this.createModeOn} />
             <hr className="wl-hr" />
-            {this.state.workouts.map(workout => {
-              return (
-                <WorkoutCard
-                  key={workout.id}
-                  workout={workout}
-                  deleteWorkout={this.deleteWorkout}
-                  editModeOn={this.editModeOn}
-                  {...this.props}
-                />
-              )
-            })
-            }
+            <div className="wl-card-container">
+              {this.state.workouts.map((workout, indx) => {
+                return (
+                  <div key={indx}>
+                    <WorkoutCard
+                      key={workout.id}
+                      workout={workout}
+                      deleteWorkout={this.deleteWorkout}
+                      editModeOn={this.editModeOn}
+                      {...this.props}
+                    />
+                    <hr className="wl-hr-below-card" />
+                  </div>
+                )
+              })
+              }
+            </div>
           </div>
         )
     }

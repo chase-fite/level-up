@@ -59,3 +59,41 @@
 .wl-plus {
     margin-left: 5px;
 }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    height: 24px;
+    width: 240px;
+    margin-right: 10px;
+}
+
+
+
+.wl-hr-below-search {
+    margin-top: 0px;
+    margin-bottom: 4px;
+}
+
+.wl-hr-below-card {
+    margin-left: -50%;
+    margin-right: -50%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.we-minus, .we-save {
+    margin-left: 34px;
+}
+
+.we-hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.we-add-exercise {
+    margin-bottom: 0;
+}

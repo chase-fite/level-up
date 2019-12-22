@@ -20,3 +20,7 @@ header {
     width: auto;
     overflow: auto;
 }
+
+.navbar-container {
+    border-bottom: 1px solid black;
+}

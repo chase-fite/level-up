@@ -7,7 +7,8 @@ class History extends Component {
   state = {
     completedWorkouts: [],
     editMode: false,
-    editEntityId: 0
+    editEntityId: 0,
+    search: ""
   }
 
   componentDidMount() {
@@ -23,6 +24,29 @@ class History extends Component {
       })
   }
 
+  handleSearch = evt => {
+    const creds = JSON.parse(localStorage.getItem("credentials"))
+    const stateToChange = {}
+    stateToChange[evt.target.id] = evt.target.value
+    this.setState(stateToChange)
+    APIManager.get(`completedWorkouts?userId=${creds.loggedInUserId}&_sort=date&_order=desc&_embed=results&_expand=workout`)
+      .then(completedWorkoutsR => {
+        let temp = completedWorkoutsR.filter(cw => {
+          const dateString = this.convertDateTimeFromISO(cw.date).toDateString()
+          return ((cw.active === false && cw.workout.name.toLowerCase().includes(this.state.search.toLowerCase())) ||
+          (cw.active === false && dateString.toLowerCase().includes(this.state.search.toLowerCase()))
+          )
+        })
+        this.setState({
+          completedWorkouts: temp
+        })
+      })
+  }
+
+  convertDateTimeFromISO(date) {
+    return new Date(date)
+  }
+
   removeCompletedWorkout = (cwId) => {
     let temp = this.state.completedWorkouts.filter(cw => {
       return cw.id !== cwId
@@ -35,11 +59,23 @@ class History extends Component {
   editModeOn = (cwId) => {
     this.setState({
       editMode: true,
-      editEntityId: cwId
+      editEntityId: cwId,
     })
   }
 
   editModeOff = () => {
+    this.setState({
+      editMode: false,
+      editEntityId: 0
+    })
+  }
+
+  clearSearchBar = () => {
+    this.refs['search-input'].value = ""
+  }
+
+  // unused for now
+  editModeOffWithGet = () => {
     const creds = JSON.parse(localStorage.getItem("credentials"))
     APIManager.get(`completedWorkouts?userId=${creds.loggedInUserId}&_sort=date&_order=desc&_embed=results&_expand=workout`)
       .then(completedWorkoutsR => {
@@ -54,11 +90,15 @@ class History extends Component {
       })
   }
 
-
   render() {
     return (
       <>
-        {this.state.completedWorkouts.map(completedWorkout => {
+        <div className="search-container">
+          <div>Search &nbsp;</div>
+          <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
+        </div>
+        <hr className="wl-hr-below-search" />
+        {this.state.completedWorkouts.map((completedWorkout, indx) => {
           return (
             <div key={completedWorkout.id}>
               {(this.state.editMode === true && completedWorkout.id === this.state.editEntityId) ?

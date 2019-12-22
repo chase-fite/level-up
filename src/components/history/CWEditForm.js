@@ -44,6 +44,7 @@ class CWEditForm extends Component {
             })
     }
 
+    // updating the performance string for each result object tied to the completed workout
     saveCompletedWorkout = () => {
         this.state.exerciseList.forEach((exercise, indx) => {
             let resultString = ""

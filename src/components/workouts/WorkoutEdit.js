@@ -37,11 +37,13 @@ class WorkoutEdit extends Component {
         })
     }
 
+    // updates the workout name then puts all removed exercises in the users storage workout
+    // and adds the chosen exercises to the current workout
     saveWorkout = () => {
         const creds = JSON.parse(localStorage.getItem("credentials"))
         const newWorkout = {
             id: this.props.workout.id,
-            userId: creds.loggedInUserId,
+            userId: this.props.workout.userId,
             name: this.refs['workoutName'].value
         }
         APIManager.update(`workouts`, newWorkout)
@@ -49,7 +51,7 @@ class WorkoutEdit extends Component {
             let promiseArrayRemoveEx = []
             this.state.removedExercises.forEach(exercise => {
                 let updatedExercise = exercise
-                updatedExercise.workoutId = 5
+                updatedExercise.workoutId = creds.storageWorkoutId
                 promiseArrayRemoveEx.push(APIManager.update(`exercises`, updatedExercise))
             })
             const promiseArray = []
@@ -67,12 +69,13 @@ class WorkoutEdit extends Component {
         return (
             <>
                 <div>
-                    <label>Workout Name</label>
+                    <label>Workout Name &nbsp;</label>
                     <input type="text" ref={`workoutName`} defaultValue={this.props.workout.name}></input>
                 </div>
-                <FontAwesomeIcon icon={faMinusCircle} onClick={this.props.editModeOff}/>
-                <FontAwesomeIcon icon={faSave} onClick={this.saveWorkout}/>
-                <label>Added Exercises:</label>
+                <label className="we-add-exercise">Added Exercises</label>
+                <FontAwesomeIcon icon={faMinusCircle} className="fa-lg we-minus" onClick={this.props.editModeOffWithGet}/>
+                <FontAwesomeIcon icon={faSave} className="fa-lg we-save" onClick={this.saveWorkout}/>
+                <hr className="we-hr" />
                 <div className="el-exercise-card">
                     {this.state.addedExercises.map((exercise, indx) => {
                         return (
