@@ -71,8 +71,8 @@ class Register extends Component {
 
     render() {
         return (
-            <>
-                <h3>Register</h3>
+            <div className="reg-main-container">
+                <h5>Register</h5>
                 <div className="reg-label-input-container">
                     <div className="reg-label-container">
                         <div>Name</div>
@@ -103,8 +103,10 @@ class Register extends Component {
                         <br />
                     </div>
                 </div>
-                <button onClick={this.handleRegister}>Register</button>
-            </>
+                <div className="btn-con">
+                    <button onClick={this.handleRegister}>Register</button>
+                </div>
+            </div>
         )
     }
 }

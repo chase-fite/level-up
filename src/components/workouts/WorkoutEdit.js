@@ -68,23 +68,23 @@ class WorkoutEdit extends Component {
     render() {
         return (
             <>
-                <div>
+                <div className="we-name-input-container">
                     <label>Workout Name &nbsp;</label>
-                    <input type="text" ref={`workoutName`} defaultValue={this.props.workout.name}></input>
+                    <input className="we-name-input" type="text" ref={`workoutName`} defaultValue={this.props.workout.name}></input>
                 </div>
+                <hr className="we-hr" />
                 <label className="we-add-exercise">Added Exercises</label>
                 <FontAwesomeIcon icon={faMinusCircle} className="fa-lg we-minus" onClick={this.props.editModeOffWithGet}/>
                 <FontAwesomeIcon icon={faSave} className="fa-lg we-save" onClick={this.saveWorkout}/>
-                <hr className="we-hr" />
                 <div className="el-exercise-card">
                     {this.state.addedExercises.map((exercise, indx) => {
                         return (
                             <div key={indx} className="ec-exercise-container">
-                                <div>{exercise.name}</div>
+                                <div className="we-exercise-name">{exercise.name}</div>
                                 {exercise.plan.split('--').map((set, indx) => {
                                     return <div key={indx}>{set}</div>
                                 })}
-                                <FontAwesomeIcon icon={faMinusCircle} onClick={() => this.removeExercise(exercise)} />
+                                <FontAwesomeIcon icon={faMinusCircle} className="fa-lg" onClick={() => this.removeExercise(exercise)} />
                             </div>
                         )
                     })}

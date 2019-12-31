@@ -6,6 +6,7 @@ import ExerciseList from './exercises/ExerciseList'
 import History from './history/History'
 import Login from './auth/Login'
 import Register from './auth/Register'
+import LineGraph from './charts/LineGraph'
 
 class ApplicationViews extends Component {
     render() {
@@ -34,6 +35,13 @@ class ApplicationViews extends Component {
                 <Route exact path="/history" render={(props) => {
                     if (this.props.isAuthenticated()) {
                         return <History />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }} />
+                <Route exact path="/graph" render={(props) => {
+                    if (this.props.isAuthenticated()) {
+                        return <LineGraph />
                     } else {
                         return <Redirect to="/login" />
                     }

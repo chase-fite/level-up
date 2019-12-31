@@ -61,37 +61,36 @@ class CompletedWorkout extends Component {
 
     render() {
         return (
-            <>
-                <div>{this.props.completedWorkout.workout.name} - {this.convertDateTimeFromISO(this.props.completedWorkout.date).toDateString()}</div>
+            <div className="cw-workout-card">
+                <div className="cw-workout-title">{this.props.completedWorkout.workout.name} - {this.convertDateTimeFromISO(this.props.completedWorkout.date).toDateString()}</div>
                 <div className="cw-workout-container">
                     {this.state.exerciseList.map((exercise, exIndx) => {
                         return (
                             <div key={exercise.id} className="cw-exercise-container">
                                 <div className="">
-                                    <div>{exercise.name}</div>
+                                    <div className="cw-exercise-name">{exercise.name}</div>
                                     {exercise.plan.split('--').map((set, indx) => {
                                         return <div key={indx}>{set}</div>
                                     })}
                                 </div>
                                 <div className="cw-results-container">
-                                    <div>results</div>
+                                    <div className="cw-result">results</div>
                                     {this.state.resultList[exIndx].performance
                                         .split('--').map((result, indx) => {
-                                            return <div key={indx}>{result}</div>
+                                            return <div className="cw-result-text" key={indx}>{result}</div>
                                         })}
                                 </div>
                             </div>
                         )
                     })}
                 </div>
-                <div>
+                <div className="cw-icon-container">
                     <FontAwesomeIcon icon={faEdit} className="fa-lg cw-edit" onClick={() => {
                         this.props.editModeOn(this.props.completedWorkout.id)}}
                     />
                     <FontAwesomeIcon icon={faTimes} className="fa-lg cw-x" onClick={this.deleteCompletedWorkout} />
                 </div>
-                <hr className="cw-hr" />
-            </>
+            </div>
         )
     }
 }

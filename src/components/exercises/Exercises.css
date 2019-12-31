@@ -1,13 +1,26 @@
+.ex-outer-div {
+    text-align: center;
+}
+
 .ex-form-container {
-    margin-left: 5px;
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .el-exercise-card {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.ec-exercise-name {
+    font-weight: 500;
 }
 
 .ec-exercise-container {
+    background-image: linear-gradient(#A8FEFF, #09FDFF);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 1px solid black;
     border-radius: .25rem;
     margin: 5px;
@@ -27,15 +40,16 @@
 .excr-input {
     height: 24px;
     width: 277px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .excr-label {
-    margin-bottom: 24px;
+    margin-bottom: 2px;
 }
 
 .excr-set-input {
     height: 24px;
+    width: 100px;
 }
 
 .ex-label-input-pair {
@@ -43,8 +57,10 @@
 }
 
 .ecf-input-container {
+    position: relative;
+    right: 16px;
+    margin-top: 34px;
     display: flex;
-    margin-bottom: 24px;
 }
 
 .ee-input-container {
@@ -54,7 +70,7 @@
 .ee-input {
     width: 50px;
     height: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
 }
 
 .ec-x {
@@ -76,4 +92,8 @@
 
 .ec-minus {
     margin-left: 34px;
+}
+
+.ec-exercise-name {
+    font-weight: 500;
 }

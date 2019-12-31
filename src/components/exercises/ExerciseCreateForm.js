@@ -103,73 +103,73 @@ class ExerciseEditForm extends Component {
 
     render() {
         return (
-            <div className="ex-form-container">
-                <div className="ex-label-input-container">
-                    <div>
-                        <div className="excr-label">Create Exercise</div>
-                        <div className="excr-label">Exercise Name</div>
-                        <div className="excr-label">Number of Sets</div>
-                        <div className="excr-label">Format</div>
-                    </div>
-                    <div className="ex-input-container">
-                        <div className="excr-input">
-                            <FontAwesomeIcon icon={faSave} className="fa-lg ec-save" onClick={this.saveExercise} />
-                            <FontAwesomeIcon icon={faMinusCircle} className="fa-lg ec-minus" onClick={this.props.createModeOffWithGet} />
-                        </div>
+            <div className="ex-outer-div">
+                <div className="ex-form-container">
+                    <div className="ex-label-input-container">
                         <div>
-                            <input type="text" id="name" className="excr-input" onChange={this.handleFieldChange}></input>
-                        </div>
-                        <div>
-                            <select id="numOfSets" className="excr-input" onChange={this.handleNumOfSets}>
-                                {this.state.setSelectArray.map((num, indx) => {
-                                    return <option key={indx} value={num}>{num}</option>
-                                })}
-                            </select>
-                        </div>
-                        <div>
-                            <select id="format" className="excr-input" onChange={this.handleFieldChange}>
-                                <option value="reps-lbs">repetitions with weight: pounds</option>
-                                <option value="reps-bodyweight">repetitions with weight: bodyweight</option>
-                                <option value="reps-min">repetitions within time: minutes</option>
-                                <option value="reps-sec">repetitions within time: seconds</option>
-                                <option value="min-reps">time to achieve repetitions: minutes</option>
-                                <option value="sec-reps">time to achieve repetitions: seconds</option>
-                                <option value="min">time as a goal for set: minutes</option>
-                                <option value="sec">time as a goal for set: seconds</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                {(this.state.setInputArray !== []) ?
-                    this.state.setInputArray.map((num, indx) => {
-                        return (
-                            <div key={indx} className="ecf-input-container">
-                                <div>Set {num}:&nbsp;</div>
-                                <input className="excr-set-input" ref={`firstInput-${indx + 1}`}></input>
-                                <div>&nbsp;{this.state.format.split('-')[0]}</div>
-                                {(this.state.format === "min" || this.state.format === 'sec' || this.state.format.split('-')[1] === "bodyweight")
-                                    ?
-                                    <></>
-                                    :
-                                    <>
-                                        {(this.state.format.includes('bodyweight'))
-                                            ?
-                                            <div>,&nbsp;bodyweight</div>
-                                            :
-                                            <>
-                                                <div>,&nbsp;</div>
-                                                <input className="excr-set-input" ref={`secondInput-${indx}`}></input>
-                                                <div>&nbsp;{this.state.format.split('-')[1]}</div>
-                                            </>
-                                        }
-                                    </>
-                                }
+                            <div className="excr-label">Create Exercise</div>
+                            <div className="excr-input">
+                                <FontAwesomeIcon icon={faSave} className="fa-lg ec-save" onClick={this.saveExercise} />
+                                <FontAwesomeIcon icon={faMinusCircle} className="fa-lg ec-minus" onClick={this.props.createModeOffWithGet} />
                             </div>
-                        )
-                    })
-                    :
-                    <></>
-                }
+                            <div className="excr-label">Exercise Name</div>
+                            <div>
+                                <input type="text" id="name" className="excr-input" onChange={this.handleFieldChange}></input>
+                            </div>
+                            <div className="excr-label">Number of Sets</div>
+                            <div>
+                                <select id="numOfSets" className="excr-input" onChange={this.handleNumOfSets}>
+                                    {this.state.setSelectArray.map((num, indx) => {
+                                        return <option key={indx} value={num}>{num}</option>
+                                    })}
+                                </select>
+                            </div>
+                            <div className="excr-label">Format</div>
+                            <div>
+                                <select id="format" className="excr-input" onChange={this.handleFieldChange}>
+                                    <option value="reps-lbs">repetitions with weight: pounds</option>
+                                    <option value="reps-bodyweight">repetitions with weight: bodyweight</option>
+                                    <option value="reps-min">repetitions within time: minutes</option>
+                                    <option value="reps-sec">repetitions within time: seconds</option>
+                                    <option value="min-reps">time to achieve repetitions: minutes</option>
+                                    <option value="sec-reps">time to achieve repetitions: seconds</option>
+                                    <option value="min">time as a goal for set: minutes</option>
+                                    <option value="sec">time as a goal for set: seconds</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    {(this.state.setInputArray !== []) ?
+                        this.state.setInputArray.map((num, indx) => {
+                            return (
+                                <div key={indx} className="ecf-input-container">
+                                    <div>Set {num}:&nbsp;</div>
+                                    <input className="excr-set-input" ref={`firstInput-${indx + 1}`}></input>
+                                    <div>&nbsp;{this.state.format.split('-')[0]}</div>
+                                    {(this.state.format === "min" || this.state.format === 'sec' || this.state.format.split('-')[1] === "bodyweight")
+                                        ?
+                                        <></>
+                                        :
+                                        <>
+                                            {(this.state.format.includes('bodyweight'))
+                                                ?
+                                                <div>,&nbsp;bodyweight</div>
+                                                :
+                                                <>
+                                                    <div>,&nbsp;</div>
+                                                    <input className="excr-set-input" ref={`secondInput-${indx}`}></input>
+                                                    <div>&nbsp;{this.state.format.split('-')[1]}</div>
+                                                </>
+                                            }
+                                        </>
+                                    }
+                                </div>
+                            )
+                        })
+                        :
+                        <></>
+                    }
+                </div>
             </div>
         )
     }

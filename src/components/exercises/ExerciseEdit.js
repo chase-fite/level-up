@@ -67,7 +67,7 @@ class ExerciseEdit extends Component {
     render() {
         return (
             <div className="ec-exercise-container">
-                <div>{this.props.exercise.name}</div>
+                <div className="ec-exercise-name">{this.props.exercise.name}</div>
                 {this.props.exercise.plan.split('--').map((set, indx) => {
                     return (
                         <div key={indx} className="ee-input-container">{`set ${indx + 1}:`}&nbsp;

@@ -43,6 +43,7 @@ class LevelUp extends Component {
                 <NavBar
                     clearUser={this.clearUser}
                     isAuthenticated={this.isAuthenticated}
+                    {...this.props}
                 />
                 <ApplicationViews
                     setUser={this.setUser}

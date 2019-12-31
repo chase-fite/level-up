@@ -93,7 +93,7 @@ class History extends Component {
   render() {
     return (
       <>
-        <div className="search-container">
+        <div className="hist-search-container">
           <div>Search &nbsp;</div>
           <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
         </div>
