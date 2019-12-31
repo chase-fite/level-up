@@ -47,8 +47,8 @@ class Login extends Component {
     render() {
 
         return (
-            <>
-                <h3>Login</h3>
+            <div className="login-main-container">
+                <h5>Login</h5>
                 <div className="login-container">
                     <div className="login-label-container">
                         <div>Email</div>
@@ -65,8 +65,10 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
-                <button onClick={this.handleLogin}>Login</button>
-            </>
+                <div className="btn-con">
+                    <button onClick={this.handleLogin}>Login</button>
+                </div>
+            </div>
         )
     }
 }

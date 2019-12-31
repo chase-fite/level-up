@@ -55,9 +55,9 @@ class WorkoutCreate extends Component {
     render() {
         return (
             <>
-                <div>
-                    <label>Workout Name&nbsp;</label>
-                    <input type="text" ref={`workoutName`}></input>
+                <div className="wc-workout-name-container">
+                    <div>Workout Name&nbsp;</div>
+                    <input className="wc-workout-name-input" type="text" ref={`workoutName`}></input>
                 </div>
                 <hr className="wc-top-hr" />
                 <label>Added Exercises</label>

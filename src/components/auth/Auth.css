@@ -29,5 +29,23 @@
 
 .reg-input {
     height: 24px;
-    width: 240px;
+    width: 170px;
+}
+
+.login-input {
+    height: 24px;
+    width: 200px;
+}
+
+h5 {
+    margin-top: 10px !important;
+    text-align: center;
+}
+
+.btn-con {
+    text-align: center;
+}
+
+.reg-main-container, .login-main-container {
+    margin: 0px 20px;
 }

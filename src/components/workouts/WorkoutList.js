@@ -145,13 +145,14 @@ class WorkoutList extends Component {
       default:
         return (
           <div>
-            <div className="search-container">
-              <div>Search &nbsp;</div>
-              <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
+            <div className="search-plus-container">
+              <FontAwesomeIcon icon={faPlusCircle} className="fa-lg wl-plus" onClick={this.createModeOn} />
+              <div className="search-container">
+                <div>Search &nbsp;</div>
+                <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
+              </div>
             </div>
             <hr className="wl-hr-below-search" />
-            <FontAwesomeIcon icon={faPlusCircle} className="fa-lg wl-plus" onClick={this.createModeOn} />
-            <hr className="wl-hr" />
             <div className="wl-card-container">
               {this.state.workouts.map((workout, indx) => {
                 return (
@@ -163,7 +164,6 @@ class WorkoutList extends Component {
                       editModeOn={this.editModeOn}
                       {...this.props}
                     />
-                    <hr className="wl-hr-below-card" />
                   </div>
                 )
               })

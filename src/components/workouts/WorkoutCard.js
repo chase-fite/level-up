@@ -39,13 +39,13 @@ class WorkoutCard extends Component {
 
     render() {
         return (
-            <>
-                <div>{this.props.workout.name}</div>
+            <div className="wc-workout-card">
+                <div className="wc-workout-name">{this.props.workout.name}</div>
                 <div className="workout-card-body">
                     {this.state.exercises.map(exercise => {
                         return (
                             <div key={exercise.id} className="exercise-container">
-                                <div>{exercise.name}</div>
+                                <div className="wc-exercise-name">{exercise.name}</div>
                                 {exercise.plan.split('--').map((set, indx) => {
                                     return <div key={indx}>{set}</div>
                                 })}
@@ -53,12 +53,12 @@ class WorkoutCard extends Component {
                         )
                     })}
                 </div>
-                <div>
+                <div className="wc-icons">
                     <FontAwesomeIcon id={this.props.workout.id} className="fa-lg wc-check" icon={faCheckCircle} onClick={this.setActiveWorkout} />
                     <FontAwesomeIcon icon={faTimes} className="fa-lg wc-x" onClick={() => this.props.deleteWorkout(this.props.workout)} />
                     <FontAwesomeIcon icon={faEdit} className="fa-lg wc-edit" onClick={() => this.props.editModeOn(this.props.workout.id)} />
                 </div>
-            </>
+            </div>
 
 
 

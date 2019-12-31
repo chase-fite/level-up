@@ -8,7 +8,7 @@ class ExerciseCard extends Component {
     render() {
         return (
             <div className="ec-exercise-container">
-                <div>{this.props.exercise.name}</div>
+                <div className="ec-exercise-name">{this.props.exercise.name}</div>
                 {this.props.exercise.plan.split('--').map((set, indx) => {
                     return <div key={indx}>{set}</div>
                 })}

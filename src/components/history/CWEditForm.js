@@ -65,22 +65,26 @@ class CWEditForm extends Component {
         })
     }
 
+    convertDateTimeFromISO(date) {
+        return new Date(date)
+    }
+
     render() {
         return (
             <>
-                <div>{this.props.completedWorkout.workout.name}</div>
-                <div className="aw-workout-container">
+                <div className="cwe-workout-container">
+                    <div className="cw-workout-title">{this.props.completedWorkout.workout.name} - {this.convertDateTimeFromISO(this.props.completedWorkout.date).toDateString()}</div>
                     {this.state.exerciseList.map((exercise, exIndx) => {
                         return (
-                            <div key={exercise.id} className="aw-exercise-input-container">
-                                <div className="aw-exercise-container">
-                                    <div>{exercise.name}</div>
+                            <div key={exercise.id} className="cwe-exercise-input-container">
+                                <div className="cwe-exercise-container">
+                                    <div className="cw-exercise-name">{exercise.name}</div>
                                     {exercise.plan.split('--').map((set, indx) => {
                                         return <div className="aw-set" key={indx}>{set}</div>
                                     })}
                                 </div>
                                 <div className="aw-input-container">
-                                    <div>{exercise.format.split('-')[0]}</div>
+                                    <div className="cw-result">{exercise.format.split('-')[0]}</div>
                                     {this.state.resultList[exIndx].performance.split('--').map((result, indx) => {
                                         return (
                                             <div key={indx}>
@@ -94,7 +98,7 @@ class CWEditForm extends Component {
                         )
                     })}
                 </div>
-                <div>
+                <div className="cwe-icon-container">
                     <FontAwesomeIcon icon={faSave} className="fa-lg cwe-save" onClick={this.saveCompletedWorkout} />
                     <FontAwesomeIcon icon={faMinusCircle} className="fa-lg cwe-minus" onClick={this.props.editModeOff} />
                 </div>

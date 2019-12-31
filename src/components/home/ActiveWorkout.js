@@ -30,39 +30,41 @@ class ActiveWorkout extends Component {
 
     render() {
         return (
-            <>
+            <div>
                 <div className="aw-icon-container">
                     <FontAwesomeIcon icon={faSave} className="fa-lg aw-save" onClick={this.saveActiveWorkout} />
                     <FontAwesomeIcon icon={faMinusCircle} className="fa-lg aw-minus" onClick={this.props.deleteActiveWorkout} />
                 </div>
                 <hr className="aw-hr" />
-                <div>{this.props.activeWorkout.workout.name}</div>
-                <div className="aw-workout-container">
-                    {this.props.exercises.map(exercise => {
-                        return (
-                            <div key={exercise.id} className="aw-exercise-input-container">
-                                <div className="aw-exercise-container">
-                                    <div>{exercise.name}</div>
-                                    {exercise.plan.split('--').map((set, indx) => {
-                                        return <div className="aw-set" key={indx}>{set}</div>
-                                    })}
+                <div className="aw-main-container">
+                    <div className="aw-workout-name">{this.props.activeWorkout.workout.name}</div>
+                    <div className="aw-workout-container">
+                        {this.props.exercises.map(exercise => {
+                            return (
+                                <div key={exercise.id} className="aw-exercise-input-container">
+                                    <div className="aw-exercise-container">
+                                        <div className="cw-exercise-name">{exercise.name}</div>
+                                        {exercise.plan.split('--').map((set, indx) => {
+                                            return <div className="aw-set" key={indx}>{set}</div>
+                                        })}
+                                    </div>
+                                    <div className="aw-input-container">
+                                        <div className="cw-result">{exercise.format.split('-')[0]}</div>
+                                        {exercise.plan.split('--').map((set, indx) => {
+                                            return (
+                                                <div key={indx}>
+                                                    <input type="text" className="aw-input"
+                                                        ref={`${exercise.name}-${indx}`}></input>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
-                                <div className="aw-input-container">
-                                    <div>{exercise.format.split('-')[0]}</div>
-                                    {exercise.plan.split('--').map((set, indx) => {
-                                        return (
-                                            <div key={indx}>
-                                                <input type="text" className="aw-input"
-                                                    ref={`${exercise.name}-${indx}`}></input>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
-            </>
+            </div>
         )
     }
 }
