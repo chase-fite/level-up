@@ -152,7 +152,6 @@ class WorkoutList extends Component {
                 <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
               </div>
             </div>
-            <hr className="wl-hr-below-search" />
             <div className="wl-card-container">
               {this.state.workouts.map((workout, indx) => {
                 return (

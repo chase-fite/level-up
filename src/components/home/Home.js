@@ -78,9 +78,14 @@ class Home extends Component {
       <>
       {(this.state.activeWorkout.workout.name === "")
         ?
-        <></>
+        <div className="img-container">
+          <img src={require('../../images/levelUpLogo2.png')} alt="level up logo" />
+        </div>
         :
         <>
+          <div className="img-container">
+            <img src={require('../../images/levelUpLogo2.png')} alt="level up logo" />
+          </div>
           <ActiveWorkout
             key={this.state.activeWorkout.id}
             activeWorkout={this.state.activeWorkout}

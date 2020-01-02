@@ -31,9 +31,11 @@ class ActiveWorkout extends Component {
     render() {
         return (
             <div>
+                <hr className="aw-hr" />
                 <div className="aw-icon-container">
                     <FontAwesomeIcon icon={faSave} className="fa-lg aw-save" onClick={this.saveActiveWorkout} />
                     <FontAwesomeIcon icon={faMinusCircle} className="fa-lg aw-minus" onClick={this.props.deleteActiveWorkout} />
+                    <span className="aw-title-with-icons">Active Workout</span>
                 </div>
                 <hr className="aw-hr" />
                 <div className="aw-main-container">

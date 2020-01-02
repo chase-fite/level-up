@@ -94,6 +94,18 @@ input:focus, select:focus {
 .search-plus-container {
     display: flex;
     justify-content: center;
+    position: fixed;
+    top: 45px;
+    border-bottom: 1px solid grey;
+    z-index: 2;
+    background-color: white;
+    width: 100%;
+}
+
+.wl-card-container {
+    position: relative;
+    top: 43px;
+    z-index: 1;
 }
 
 .search-input {
