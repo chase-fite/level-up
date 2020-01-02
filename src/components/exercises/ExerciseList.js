@@ -141,7 +141,7 @@ class ExerciseList extends Component {
                 <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
               </div>
             </div>
-            <hr className="wl-hr-below-search" />
+            {/* <hr className="wl-hr-below-search" /> */}
             {/* <FontAwesomeIcon icon={faPlusCircle} className="fa-lg el-plus" onClick={this.createModeOn} />
             <hr className="el-hr" /> */}
             <div className="el-exercise-card">

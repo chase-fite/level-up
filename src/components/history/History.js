@@ -94,13 +94,13 @@ class History extends Component {
     return (
       <>
         <div className="hist-search-container">
-          <div>Search &nbsp;</div>
-          <input id="search" className="search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
+          <div className="hist-search-input">Search &nbsp;</div>
+          <input id="search" className="search-input hist-search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
         </div>
         <hr className="wl-hr-below-search" />
         {this.state.completedWorkouts.map((completedWorkout, indx) => {
           return (
-            <div key={completedWorkout.id}>
+            <div className="hist-cw-container" key={completedWorkout.id}>
               {(this.state.editMode === true && completedWorkout.id === this.state.editEntityId) ?
                 <CWEditForm
                   key={completedWorkout.id}

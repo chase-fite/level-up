@@ -59,3 +59,13 @@
 .aw-icon-container {
     margin-left: 36px;
 }
+
+.img-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.aw-title-with-icons {
+    margin-left: 20px;
+    font-weight: 500;
+}
