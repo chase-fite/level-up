@@ -74,7 +74,6 @@ class History extends Component {
     this.refs['search-input'].value = ""
   }
 
-  // unused for now
   editModeOffWithGet = () => {
     const creds = JSON.parse(localStorage.getItem("credentials"))
     APIManager.get(`completedWorkouts?userId=${creds.loggedInUserId}&_sort=date&_order=desc&_embed=results&_expand=workout`)
@@ -93,6 +92,7 @@ class History extends Component {
   render() {
     return (
       <>
+        <div className="page-title">Completed Workouts</div>
         <div className="hist-search-container">
           <div className="hist-search-input">Search &nbsp;</div>
           <input id="search" className="search-input hist-search-input" type="text" ref={`search-input`} onChange={this.handleSearch}></input>
@@ -107,6 +107,7 @@ class History extends Component {
                   completedWorkout={completedWorkout}
                   editModeOn={this.editModeOn}
                   editModeOff={this.editModeOff}
+                  editModeOffWithGet={this.editModeOffWithGet}
                 />
                 :
                 <CompletedWorkout

@@ -6,6 +6,7 @@
     margin: 5px;
     width: 300px;
     padding: 5px;
+    justify-content: space-between;
 }
 
 .cw-workout-title {
@@ -34,7 +35,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 45px;
+    top: 69px;
     border-bottom: 1px solid grey;
     z-index: 2;
     background-color: white;

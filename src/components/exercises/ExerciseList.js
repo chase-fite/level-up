@@ -19,13 +19,12 @@ class ExerciseList extends Component {
 
   componentDidMount() {
     const creds = JSON.parse(localStorage.getItem("credentials"))
-    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
-      .then(results1 => {
+    APIManager.get(`exercises?userId=${creds.loggedInUserId}&_sort=name&_expand=workout`)
+      .then(exerciseList => {
         let tempArray = []
-        results1.forEach(obj => {
-          obj.exercises.forEach(exercise => tempArray.push(exercise))
+        exerciseList.forEach(exercise => {
+          tempArray.push(exercise)
         })
-        tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
         this.setState({
           exercises: tempArray
         })
@@ -37,15 +36,14 @@ class ExerciseList extends Component {
     stateToChange[evt.target.id] = evt.target.value
     this.setState(stateToChange)
     const creds = JSON.parse(localStorage.getItem("credentials"))
-    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
-      .then(results1 => {
+    APIManager.get(`exercises?userId=${creds.loggedInUserId}&_sort=name&_expand=workout`)
+      .then(exerciseList => {
         let tempArray = []
-        results1.forEach(obj => {
-          obj.exercises.forEach(exercise => tempArray.push(exercise))
+        exerciseList.forEach(exercise => {
+          tempArray.push(exercise)
         })
-        tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
         tempArray = tempArray.filter(exercise => {
-          return exercise.name.toLowerCase().includes(this.state.search.toLowerCase())
+          return exercise.name.toLowerCase().includes(this.state.search.toLowerCase()) || exercise.workout.name.toLowerCase().includes(this.state.search.toLowerCase()) 
         })
         this.setState({
           exercises: tempArray
@@ -73,13 +71,12 @@ class ExerciseList extends Component {
 
   createModeOffWithGet = () => {
     const creds = JSON.parse(localStorage.getItem("credentials"))
-    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
-      .then(results1 => {
+    APIManager.get(`exercises?userId=${creds.loggedInUserId}&_sort=name&_expand=workout`)
+      .then(exerciseList => {
         let tempArray = []
-        results1.forEach(obj => {
-          obj.exercises.forEach(exercise => tempArray.push(exercise))
+        exerciseList.forEach(exercise => {
+          tempArray.push(exercise)
         })
-        tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
         this.setState({
           exercises: tempArray,
           createMode: false
@@ -103,13 +100,12 @@ class ExerciseList extends Component {
 
   editModeOffWithGet = () => {
     const creds = JSON.parse(localStorage.getItem("credentials"))
-    APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
-      .then(results => {
-        let tempArray = []
-        results.forEach(obj => {
-          obj.exercises.forEach(exercise => tempArray.push(exercise))
-        })
-        tempArray.sort((a, b) => (a.name > b.name) ? 1 : -1)
+    APIManager.get(`exercises?userId=${creds.loggedInUserId}&_sort=name&_expand=workout`)
+    .then(exerciseList => {
+      let tempArray = []
+      exerciseList.forEach(exercise => {
+        tempArray.push(exercise)
+      })
         this.setState({
           exercises: tempArray,
           editMode: false,
@@ -119,13 +115,16 @@ class ExerciseList extends Component {
   }
 
   deleteExercise = id => {
-    APIManager.delete(`exercises/${id}`)
-    .then(() => {
-      const newExerciseList = this.state.exercises.filter(exercise => exercise.id !== id)
-      this.setState({
-        exercises: newExerciseList
-      })
-    })
+    const confirm = window.confirm("Are you sure you want to delete this exercise?")
+    if (confirm === true) {
+      APIManager.delete(`exercises/${id}`)
+        .then(() => {
+          const newExerciseList = this.state.exercises.filter(exercise => exercise.id !== id)
+          this.setState({
+            exercises: newExerciseList
+          })
+        })
+    }
   }
 
   render() {
@@ -134,6 +133,7 @@ class ExerciseList extends Component {
         {(this.state.createMode === false)
           ?
           <>
+            <div className="page-title">Exercises</div>
             <div className="search-plus-container">
               <FontAwesomeIcon icon={faPlusCircle} className="fa-lg wl-plus" onClick={this.createModeOn} />
               <div className="search-container">
