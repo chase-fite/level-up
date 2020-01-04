@@ -30,7 +30,7 @@ input:focus, select:focus {
     font-weight: 500;
 }
 
-.wc-exercise-name {
+.wc-exercise-name, .wc-added-exercise-name {
     color: black;
     font-weight: 500;
 }
@@ -95,17 +95,31 @@ input:focus, select:focus {
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 45px;
+    top: 69px;
     border-bottom: 1px solid grey;
     z-index: 2;
     background-color: white;
     width: 100%;
 }
 
+.page-title {
+    text-align: center;
+    font-weight: 500;
+    background-color: white;
+    color: #FF0C00;
+}
+
 .wl-card-container {
     position: relative;
     top: 43px;
     z-index: 1;
+}
+
+.we-added-exercise-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .search-input {
@@ -139,6 +153,11 @@ input:focus, select:focus {
 
 .we-add-exercise {
     margin-bottom: 8px;
+    margin-left: 4px;
+}
+
+.we-labels {
+    margin-left: 4px;
 }
 
 .wc-workout-name-input {
@@ -155,7 +174,7 @@ input:focus, select:focus {
     margin-bottom: 6px;
 }
 
-.we-exercise-name {
+.we-exercise-name, .wce-exercise-name {
     font-weight: 500;
 }
 

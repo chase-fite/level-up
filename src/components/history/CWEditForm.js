@@ -61,7 +61,7 @@ class CWEditForm extends Component {
                 performance: resultString
             }
             APIManager.update(`results`, newResultObj)
-            .then(() => this.props.editModeOff())
+            .then(() => this.props.editModeOffWithGet())
         })
     }
 

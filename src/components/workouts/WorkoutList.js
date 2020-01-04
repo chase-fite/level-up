@@ -9,7 +9,6 @@ import WorkoutEdit from './WorkoutEdit'
 class WorkoutList extends Component {
   state = {
     workouts: [],
-    tempWorkoutContainer: [],
     mode: "",
     editEntityId: 0,
     search: ""
@@ -107,19 +106,37 @@ class WorkoutList extends Component {
     this.setState(stateToChange)
   }
 
-  // delete, get, set state
   deleteWorkout = workout => {
-    const creds = JSON.parse(localStorage.getItem("credentials"))
-    APIManager.delete(`workouts/${workout.id}`)
-      .then(() => {
-        APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
-          .then(workouts => {
-            const filteredWorkouts = workouts.filter(workout => workout.name !== "unassigned")
-            this.setState({
-              workouts: filteredWorkouts
-            })
-          })
+    const confirm = window.confirm("Are you sure you want to delete this workout?")
+    if (confirm === true) {
+      const creds = JSON.parse(localStorage.getItem("credentials"))
+
+      let targetWorkout = this.state.workouts.filter(workoutObj => workoutObj.id === workout.id)
+      targetWorkout = targetWorkout[0]
+
+      console.log(targetWorkout)
+
+      const promiseArray = []
+      targetWorkout.exercises.forEach(exercise => {
+        const updatedExercise = exercise
+        updatedExercise.workoutId = creds.storageWorkoutId
+        console.log("updated exercise", updatedExercise)
+        promiseArray.push(APIManager.update(`exercises`, updatedExercise))
       })
+      Promise.all(promiseArray)
+        .then(() => {
+          APIManager.delete(`workouts/${workout.id}`)
+            .then(() => {
+              APIManager.get(`workouts?userId=${creds.loggedInUserId}&_embed=exercises&_sort=name`)
+                .then(workouts => {
+                  const filteredWorkouts = workouts.filter(workout => workout.name !== "unassigned")
+                  this.setState({
+                    workouts: filteredWorkouts
+                  })
+                })
+            })
+        })
+    }
   }
 
   // switch statement for determining view
@@ -145,6 +162,7 @@ class WorkoutList extends Component {
       default:
         return (
           <div>
+            <div className="page-title">Workouts</div>
             <div className="search-plus-container">
               <FontAwesomeIcon icon={faPlusCircle} className="fa-lg wl-plus" onClick={this.createModeOn} />
               <div className="search-container">
@@ -155,15 +173,13 @@ class WorkoutList extends Component {
             <div className="wl-card-container">
               {this.state.workouts.map((workout, indx) => {
                 return (
-                  <div key={indx}>
-                    <WorkoutCard
-                      key={workout.id}
-                      workout={workout}
-                      deleteWorkout={this.deleteWorkout}
-                      editModeOn={this.editModeOn}
-                      {...this.props}
-                    />
-                  </div>
+                  <WorkoutCard
+                    key={workout.id}
+                    workout={workout}
+                    deleteWorkout={this.deleteWorkout}
+                    editModeOn={this.editModeOn}
+                    {...this.props}
+                  />
                 )
               })
               }

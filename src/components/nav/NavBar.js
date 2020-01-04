@@ -16,7 +16,7 @@ class NavBar extends Component {
             <Link className="nav-link-black" to="/workouts">Workouts</Link>
             <Link className="nav-link-black" to="/exercises">Exercises</Link>
             <Link className="nav-link-black" to="/history">History</Link>
-            <Link className="nav-link-black" to="/graph">Graph</Link>
+            <Link className="nav-link-black" to="/data">Data</Link>
             <span className="nav-link-black nav-logout" onClick={this.props.clearUser}>Logout</span>
           </>
           :

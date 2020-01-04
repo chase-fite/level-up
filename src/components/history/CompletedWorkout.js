@@ -20,7 +20,7 @@ class CompletedWorkout extends Component {
                 let matchedTemplate = workoutTemplatesR.filter(template => {
                     return this.props.completedWorkout.workoutId === template.id
                 })
-                // pulls the object out of the 1 item array
+                // pulls the object out of the 1 item array from the filter
                 matchedTemplate = matchedTemplate[0]
 
                 let tempExerciseList = matchedTemplate.exercises
@@ -44,15 +44,18 @@ class CompletedWorkout extends Component {
     }
 
     deleteCompletedWorkout = () => {
-        const cwId = this.props.completedWorkout.id
-        APIManager.delete(`completedWorkouts/${this.props.completedWorkout.id}`)
-            .then(() => {
-                this.setState({
-                    exerciseList: [],
-                    resultList: []
+        const confirm = window.confirm("Are you sure you want to delete this completed workout?")
+        if (confirm === true) {
+            const cwId = this.props.completedWorkout.id
+            APIManager.delete(`completedWorkouts/${this.props.completedWorkout.id}`)
+                .then(() => {
+                    this.setState({
+                        exerciseList: [],
+                        resultList: []
+                    })
+                    this.props.removeCompletedWorkout(cwId)
                 })
-                this.props.removeCompletedWorkout(cwId)
-            })
+        }
     }
 
     convertDateTimeFromISO(date) {
@@ -86,7 +89,8 @@ class CompletedWorkout extends Component {
                 </div>
                 <div className="cw-icon-container">
                     <FontAwesomeIcon icon={faEdit} className="fa-lg cw-edit" onClick={() => {
-                        this.props.editModeOn(this.props.completedWorkout.id)}}
+                        this.props.editModeOn(this.props.completedWorkout.id)
+                    }}
                     />
                     <FontAwesomeIcon icon={faTimes} className="fa-lg cw-x" onClick={this.deleteCompletedWorkout} />
                 </div>

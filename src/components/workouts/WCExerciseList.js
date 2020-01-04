@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import WCExerciseCard from './WCExerciseCard'
 import APIManager from '../../modules/APIManager'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 
 class WCExerciseList extends Component {
     state = {
@@ -25,20 +23,34 @@ class WCExerciseList extends Component {
             })
     }
 
+    removeExercise = id => {
+        const newExerciseList = this.state.exercises.filter(exercise => {
+            return exercise.id !== id
+        })
+        this.setState({
+            exercises: newExerciseList
+        })
+    }
+
     render() {
         return (
             <>
-                <div className="el-exercise-card">
+                <div className="we-added-exercise-container">
                     {this.state.exercises.map((exercise, indx) => {
-                        return (
-                            <div key={indx}>
-                                <WCExerciseCard
-                                    key={exercise.id}
-                                    exercise={exercise}
-                                    addExercise={this.props.addExercise}
-                                />
-                            </div>
-                        )
+                        if (exercise.workoutId !== this.props.workoutId) {
+                            return (
+                                <div key={indx}>
+                                    <WCExerciseCard
+                                        key={exercise.id}
+                                        exercise={exercise}
+                                        addExercise={this.props.addExercise}
+                                        removeExercise={this.removeExercise}
+                                    />
+                                </div>
+                            )
+                        } else {
+                            return <div key={indx}></div>
+                        }
                     })}
                 </div>
             </>
