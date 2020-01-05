@@ -100,12 +100,6 @@ class WorkoutList extends Component {
       })
   }
 
-  handleFieldChange = (evt) => {
-    const stateToChange = {}
-    stateToChange[evt.target.id] = evt.target.value
-    this.setState(stateToChange)
-  }
-
   deleteWorkout = workout => {
     const confirm = window.confirm("Are you sure you want to delete this workout?")
     if (confirm === true) {
@@ -114,13 +108,10 @@ class WorkoutList extends Component {
       let targetWorkout = this.state.workouts.filter(workoutObj => workoutObj.id === workout.id)
       targetWorkout = targetWorkout[0]
 
-      console.log(targetWorkout)
-
       const promiseArray = []
       targetWorkout.exercises.forEach(exercise => {
         const updatedExercise = exercise
         updatedExercise.workoutId = creds.storageWorkoutId
-        console.log("updated exercise", updatedExercise)
         promiseArray.push(APIManager.update(`exercises`, updatedExercise))
       })
       Promise.all(promiseArray)

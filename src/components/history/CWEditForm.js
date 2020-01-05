@@ -74,35 +74,36 @@ class CWEditForm extends Component {
             <>
                 <div className="cwe-workout-container">
                     <div className="cw-workout-title">{this.props.completedWorkout.workout.name} - {this.convertDateTimeFromISO(this.props.completedWorkout.date).toDateString()}</div>
-                    {this.state.exerciseList.map((exercise, exIndx) => {
-                        return (
-                            <div key={exercise.id} className="cwe-exercise-input-container">
-                                <div className="cwe-exercise-container">
-                                    <div className="cw-exercise-name">{exercise.name}</div>
-                                    {exercise.plan.split('--').map((set, indx) => {
-                                        return <div className="aw-set" key={indx}>{set}</div>
-                                    })}
+                    <div className="cwe-exercises">
+                        {this.state.exerciseList.map((exercise, exIndx) => {
+                            return (
+                                <div key={exercise.id} className="cwe-exercise-input-container">
+                                    <div className="cwe-exercise-container">
+                                        <div className="cw-exercise-name">{exercise.name}</div>
+                                        {exercise.plan.split('--').map((set, indx) => {
+                                            return <div className="aw-set" key={indx}>{set}</div>
+                                        })}
+                                    </div>
+                                    <div className="aw-input-container">
+                                        <div className="cw-result">{exercise.format.split('-')[0]}</div>
+                                        {this.state.resultList[exIndx].performance.split('--').map((result, indx) => {
+                                            return (
+                                                <div key={indx}>
+                                                    <input type="text" className="aw-input" defaultValue={result.slice(0, 2)}
+                                                        ref={`${exercise.name}-${indx}`}></input>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
-                                <div className="aw-input-container">
-                                    <div className="cw-result">{exercise.format.split('-')[0]}</div>
-                                    {this.state.resultList[exIndx].performance.split('--').map((result, indx) => {
-                                        return (
-                                            <div key={indx}>
-                                                <input type="text" className="aw-input" defaultValue={result.slice(0, 2)}
-                                                    ref={`${exercise.name}-${indx}`}></input>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className="cwe-icon-container">
+                            )
+                        })}
+                    </div>
+                    <div className="cwe-icon-container">
                     <FontAwesomeIcon icon={faSave} className="fa-lg cwe-save" onClick={this.saveCompletedWorkout} />
                     <FontAwesomeIcon icon={faMinusCircle} className="fa-lg cwe-minus" onClick={this.props.editModeOff} />
+                    </div>
                 </div>
-                <hr className="cw-hr" />
             </>
         )
     }
