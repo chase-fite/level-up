@@ -6,26 +6,34 @@ import './Home.css'
 
 class ActiveWorkout extends Component {
 
-    // active workout is technically already a completed workout, so this function
-    // just gets all input data and creates and posts the result objects tied too each
-    // exercise
     saveActiveWorkout = () => {
-        this.props.exercises.forEach(exercise => {
-            let resultString = ""
-            for (let property in this.refs) {
-                if (property.includes(exercise.name)) {
-                    resultString += `${this.refs[property].value} ${exercise.format.split('-')[0]}--`
+        let completeForm = true
+        for (let property in this.refs) {
+            if (this.refs[property].value === "") {
+                window.alert("Please fill in all input fields")
+                completeForm = false
+                break
+            }
+        }
+        if (completeForm === true) {
+            this.props.exercises.forEach(exercise => {
+                let resultString = ""
+                for (let property in this.refs) {
+                    if (property.includes(exercise.name)) {
+                        resultString += `${this.refs[property].value} ${exercise.format.split('-')[0]}--`
+                    }
                 }
-            }
-            resultString = resultString.slice(0, (resultString.length - 2))
-            const newResultObj = {
-                completedWorkoutId: this.props.activeWorkout.id,
-                exerciseId: exercise.id,
-                performance: resultString
-            }
-            APIManager.post(`results`, newResultObj)
-        })
-        this.props.clearActiveWorkout()
+                resultString = resultString.slice(0, (resultString.length - 2))
+                const newResultObj = {
+                    completedWorkoutId: this.props.activeWorkout.id,
+                    exerciseId: exercise.id,
+                    performance: resultString
+                }
+                APIManager.post(`results`, newResultObj)
+            })
+            this.props.clearActiveWorkout()
+        }
+
     }
 
     render() {

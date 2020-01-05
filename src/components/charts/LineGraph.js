@@ -6,6 +6,10 @@ Chart.defaults.global.elements.line.tension = 0
 export default class LineGraph extends Component {
     chartRef = React.createRef();
 
+    state = {
+
+    }
+
     componentDidMount() {
         const myChartRef = this.chartRef.current.getContext("2d");
 
@@ -13,17 +17,17 @@ export default class LineGraph extends Component {
             type: "line",
             data: {
                 datasets: [{
-                    label: 'First dataset',
-                    data: [10, 20, 18, 22]
+                    label: this.props.yLabelPrimary,
+                    data: this.props.yAxisPrimary
                 }],
-                labels: ['January', 'February', 'March', 'April']
+                labels: this.props.xAxis
             },
             options: {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            min: 0,
-                            max: 50
+                            // min: 0,
+                            // max: 50
                         }
                     }]
                 }
@@ -33,13 +37,21 @@ export default class LineGraph extends Component {
     }
 
     render() {
+        console.log("line graph props: ", this.props)
         return (
-            <div>
-                <canvas
-                    id="myChart"
-                    ref={this.chartRef}
-                />
-            </div>
+            <>
+                {(this.props.xAxis === [])
+                ?
+                    <></>
+                :
+                    <div>
+                        <canvas
+                            id="myChart"
+                            ref={this.chartRef}
+                        />
+                    </div>
+                }
+            </>
         )
     }
 }

@@ -49,7 +49,7 @@
 
 .hist-cw-container {
     position: relative;
-    top: 43px;
+    top: 70px;
     z-index: 1;
 }
 
@@ -103,12 +103,18 @@
     margin-right: 15px;
 }
 
+.cwe-exercises {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .cw-hr {
     border-color: grey;
 }
 
 .cwe-icon-container {
     margin-left: 15px;
+    margin-bottom: 6px;
 }
 
 .cw-icon-container {
