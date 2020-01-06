@@ -39,6 +39,10 @@
     margin-left: 34px;
 }
 
+.ec-exercise-name-input {
+    margin-bottom: 2px;
+}
+
 .excr-title {
     font-weight: 500;
     color: #FF0C00;

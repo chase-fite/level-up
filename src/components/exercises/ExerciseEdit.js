@@ -56,7 +56,7 @@ class ExerciseEdit extends Component {
             id: this.props.exercise.id,
             workoutId: this.props.exercise.workoutId,
             format: this.props.exercise.format,
-            name: this.props.exercise.name,
+            name: this.refs['exercise-name'].value,
             plan: planString
         }
 
@@ -67,7 +67,8 @@ class ExerciseEdit extends Component {
     render() {
         return (
             <div className="ec-exercise-container">
-                <div className="ec-exercise-name">{this.props.exercise.name}</div>
+                {/* <div className="ec-exercise-name">{this.props.exercise.name}</div> */}
+                <input className="ec-exercise-name-input" type="text" defaultValue={this.props.exercise.name} ref={`exercise-name`}></input>
                 {this.props.exercise.plan.split('--').map((set, indx) => {
                     return (
                         <div key={indx} className="ee-input-container">{`set ${indx + 1}:`}&nbsp;
