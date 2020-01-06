@@ -30,6 +30,7 @@ class WorkoutEdit extends Component {
     }
 
     addExerciseToAdded = exercise => {
+        window.scrollTo(0, 0);
         const temp = this.state.addedExercises
         temp.push(exercise)
         this.setState({

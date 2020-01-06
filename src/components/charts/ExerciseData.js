@@ -79,7 +79,7 @@ class ExerciseData extends Component {
         const creds = JSON.parse(localStorage.getItem("credentials"))
         APIManager.get(`completedWorkouts?userId=${creds.loggedInUserId}&_sort=date&_order=desc&_embed=results&_expand=workout`)
             .then(completedWorkoutsR => {
-                console.log("ED completed workout results: ", completedWorkoutsR)
+                // console.log("ED completed workout results: ", completedWorkoutsR)
                 const cwReversedList = completedWorkoutsR.reverse()
                 this.setState({
                     cwList: cwReversedList
@@ -87,7 +87,7 @@ class ExerciseData extends Component {
 
                 APIManager.get(`workouts?_embed=exercises&userId=${creds.loggedInUserId}`)
                     .then(workoutTemplatesR => {
-                        console.log("ED workout templates: ", workoutTemplatesR)
+                        // console.log("ED workout templates: ", workoutTemplatesR)
 
                         // i want a list of all the exercises in completed workouts
 
@@ -101,8 +101,28 @@ class ExerciseData extends Component {
                                 }
                             }
                         }
-                        console.log("ED template list: ", templateList)
+                        // console.log("ED template list: ", templateList)
 
+                        let cwExerciseList = []
+                        for (let template of templateList) {
+                            for (let exercise of template.exercises) {
+                                let contains = false
+                                for (let listedExercise of cwExerciseList) {
+                                    if (exercise.id === listedExercise.id) {
+                                        contains = true
+                                        break
+                                    }
+                                }
+                                if (contains === false) {
+                                    cwExerciseList.push(exercise)
+                                }
+                            }
+                        }
+                        // console.log("ED cwExerciseList: ", cwExerciseList)
+                        this.setState({
+                            cwExerciseList: cwExerciseList
+                        })
+                        
                         // ok now that we have our template list, we need to a list of unique exercises
                         let uniqueExerciseList = []
                         for (let template of templateList) {
@@ -119,9 +139,7 @@ class ExerciseData extends Component {
                                 }
                             }
                         }
-                        this.setState({
-                            cwExerciseList: uniqueExerciseList
-                        })
+
                         // uniqueExerciseList.forEach(exercise => console.log("ED unique exercise name: ", exercise.name))
 
                         // sweet ok, now we have a unique list of exercises based on their name
@@ -184,7 +202,7 @@ class ExerciseData extends Component {
             }
             counter--
         }
-        console.log("timeframe", timeframe)
+        // console.log("timeframe", timeframe)
         return timeframe
     }
 
@@ -210,6 +228,8 @@ class ExerciseData extends Component {
         const idList = [this.state.selectedExercise.id]
         const exerciseList = [this.state.selectedExercise]
         this.state.cwExerciseList.forEach(exercise => {
+            console.log("ED exercise name: ", exercise.name)
+            console.log("ED exercise workoutId: ", exercise.workoutId)
             if (exercise.name.toLowerCase().includes(this.state.selectedExercise.name.toLowerCase())) {
                 if (!idList.includes(exercise.id)) {
                     idList.push(exercise.id)

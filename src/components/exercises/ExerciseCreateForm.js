@@ -107,7 +107,7 @@ class ExerciseEditForm extends Component {
                 <div className="ex-form-container">
                     <div className="ex-label-input-container">
                         <div>
-                            <div className="excr-label">Create Exercise</div>
+                            <div className="excr-label excr-title">Create Exercise</div>
                             <div className="excr-input">
                                 <FontAwesomeIcon icon={faSave} className="fa-lg ec-save" onClick={this.saveExercise} />
                                 <FontAwesomeIcon icon={faMinusCircle} className="fa-lg ec-minus" onClick={this.props.createModeOffWithGet} />

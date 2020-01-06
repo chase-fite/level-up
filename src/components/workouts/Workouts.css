@@ -161,6 +161,12 @@ input:focus, select:focus {
     margin-left: 4px;
 }
 
+.wc-title {
+    text-align: center;
+    font-weight: 500;
+    color: #FF0C00;
+}
+
 .we-labels {
     margin-left: 4px;
 }
@@ -173,6 +179,11 @@ input:focus, select:focus {
     display: flex;
     margin-top: 6px;
     margin-bottom: 6px;
+    justify-content: center;
+}
+
+.wc-added-exercise-container {
+    text-align: center;
 }
 
 .wc-icons {
