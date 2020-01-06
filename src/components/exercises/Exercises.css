@@ -39,6 +39,11 @@
     margin-left: 34px;
 }
 
+.excr-title {
+    font-weight: 500;
+    color: #FF0C00;
+}
+
 .excr-input {
     height: 24px;
     width: 277px;

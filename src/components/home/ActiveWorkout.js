@@ -32,6 +32,9 @@ class ActiveWorkout extends Component {
                 APIManager.post(`results`, newResultObj)
             })
             this.props.clearActiveWorkout()
+            setTimeout(() => {
+                this.props.history.push('/history')
+            }, 500)
         }
 
     }

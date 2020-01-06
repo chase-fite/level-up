@@ -92,6 +92,7 @@ class Home extends Component {
             exercises={this.state.exercises}
             deleteActiveWorkout={this.deleteActiveWorkout}
             clearActiveWorkout={this.clearActiveWorkout}
+            {...this.props}
           />
         </>
       }

@@ -27,6 +27,7 @@ class WorkoutCreate extends Component {
     }
 
     addExerciseToAdded = exercise => {
+        window.scrollTo(0, 0);
         const temp = this.state.addedExercises
         temp.push(exercise)
         this.setState({
@@ -115,14 +116,19 @@ class WorkoutCreate extends Component {
     render() {
         return (
             <>
+                <div>
+                    <div className="wc-title">Create Workout</div>       
+                </div>
                 <div className="wc-workout-name-container">
                     <div>Workout Name&nbsp;</div>
                     <input className="wc-workout-name-input" type="text" ref={`workoutName`}></input>
                 </div>
                 <hr className="wc-top-hr" />
-                <label>Added Exercises</label>
-                <FontAwesomeIcon className="fa-lg wc-minus" icon={faMinusCircle} onClick={this.props.createModeOffWithGet} />
-                <FontAwesomeIcon className="fa-lg wc-save" icon={faSave} onClick={this.createWorkout} />
+                <div className="wc-added-exercise-container">
+                    <label>Added Exercises</label>
+                    <FontAwesomeIcon className="fa-lg wc-minus" icon={faMinusCircle} onClick={this.props.createModeOffWithGet} />
+                    <FontAwesomeIcon className="fa-lg wc-save" icon={faSave} onClick={this.createWorkout} />
+                </div>
                 <div className="wc-exercise-card">
                     {this.state.addedExercises.map((exercise, indx) => {
                         return (
