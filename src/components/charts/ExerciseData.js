@@ -53,7 +53,6 @@ class ExerciseData extends Component {
             { label: "5", value: 5 },
             { label: "6", value: 6 },
         ],
-        // exerciseSelection: [],
         reactExerciseSelect: [],
         cwList: [],
         cwExerciseList: [],
@@ -69,8 +68,6 @@ class ExerciseData extends Component {
         graphType: ""
     }
 
-    // we need a list of all the exercises that are included in our completed workouts so we can populate the graph with that data
-
     convertDateTimeFromISO(date) {
         return new Date(date)
     }
@@ -79,7 +76,7 @@ class ExerciseData extends Component {
         const creds = JSON.parse(localStorage.getItem("credentials"))
         APIManager.get(`completedWorkouts?userId=${creds.loggedInUserId}&_sort=date&_order=desc&_embed=results&_expand=workout`)
             .then(completedWorkoutsR => {
-                // console.log("ED completed workout results: ", completedWorkoutsR)
+
                 const cwReversedList = completedWorkoutsR.reverse()
                 this.setState({
                     cwList: cwReversedList
@@ -87,11 +84,7 @@ class ExerciseData extends Component {
 
                 APIManager.get(`workouts?_embed=exercises&userId=${creds.loggedInUserId}`)
                     .then(workoutTemplatesR => {
-                        // console.log("ED workout templates: ", workoutTemplatesR)
 
-                        // i want a list of all the exercises in completed workouts
-
-                        // ok first lets grab a list of all the templates that are used in completed workouts
                         const templateList = []
                         for (let template of workoutTemplatesR) {
                             for (let cw of completedWorkoutsR) {
@@ -101,7 +94,6 @@ class ExerciseData extends Component {
                                 }
                             }
                         }
-                        // console.log("ED template list: ", templateList)
 
                         let cwExerciseList = []
                         for (let template of templateList) {
@@ -118,12 +110,10 @@ class ExerciseData extends Component {
                                 }
                             }
                         }
-                        // console.log("ED cwExerciseList: ", cwExerciseList)
                         this.setState({
                             cwExerciseList: cwExerciseList
                         })
                         
-                        // ok now that we have our template list, we need to a list of unique exercises
                         let uniqueExerciseList = []
                         for (let template of templateList) {
                             for (let exercise of template.exercises) {
@@ -140,11 +130,6 @@ class ExerciseData extends Component {
                             }
                         }
 
-                        // uniqueExerciseList.forEach(exercise => console.log("ED unique exercise name: ", exercise.name))
-
-                        // sweet ok, now we have a unique list of exercises based on their name
-
-                        // now we need to make sure we remove duplicates that are just higher level exercises
                         const regex = /[0-9]/
                         uniqueExerciseList = uniqueExerciseList.filter(exercise => {
                             return !regex.test(exercise.name)
@@ -155,7 +140,6 @@ class ExerciseData extends Component {
                             reactSelectArray.push({ label: exercise.name, value: exercise })
                         })
 
-                        // i need a list of unique years from my completed workouts
                         const years = []
                         completedWorkoutsR.forEach(cw => {
                             if (!years.includes(this.convertDateTimeFromISO(cw.date).toDateString().split(' ')[3])) {
@@ -168,7 +152,6 @@ class ExerciseData extends Component {
                         })
 
                         this.setState({
-                            // exerciseSelection: uniqueExerciseList,
                             reactExerciseSelect: reactSelectArray,
                             yearList: yearsSelectArray
                         })
@@ -202,7 +185,6 @@ class ExerciseData extends Component {
             }
             counter--
         }
-        // console.log("timeframe", timeframe)
         return timeframe
     }
 
@@ -228,8 +210,6 @@ class ExerciseData extends Component {
         const idList = [this.state.selectedExercise.id]
         const exerciseList = [this.state.selectedExercise]
         this.state.cwExerciseList.forEach(exercise => {
-            console.log("ED exercise name: ", exercise.name)
-            console.log("ED exercise workoutId: ", exercise.workoutId)
             if (exercise.name.toLowerCase().includes(this.state.selectedExercise.name.toLowerCase())) {
                 if (!idList.includes(exercise.id)) {
                     idList.push(exercise.id)
@@ -261,23 +241,12 @@ class ExerciseData extends Component {
             for (let date of timeframe) {
                 if (this.convertDateTimeFromISO(cw.date).toDateString().split(' ')[1] === date.month && this.convertDateTimeFromISO(cw.date).toDateString().split(' ')[3] === date.year) {
 
-
-                    // now we need to make sure our chosen exercise is within this cw result array
                     cw.results.forEach(result => {
                         correspondingExerciseList.forEach(exercise => {
                             if (result.exerciseId === exercise.id) {
-                                // console.log("this date was within our timeframe: ", this.formatDateForGraph(cw.date))
-                                // console.log("plan: ", exercise.plan)
-                                // console.log("performance: ", result.performance)
-
-                                // we want to check the format and produce averages based on that i think
                                 if (this.state.selectedExercise.format === "reps-bodyweight" || this.state.selectedExercise.format === "min" || this.state.selectedExercise.format === "sec") {
 
-                                    // plan:  set 1: 12 reps, 30 lbs--set 2: 10 reps, 35 lbs--set 3: 8 reps, 40 lbs
-                                    // performance:  10 reps--8 reps--8 reps
-
                                     xAxis.push(this.formatDateForGraph(cw.date))
-
 
                                     const performanceSplit = result.performance.split('--')
                                     const primaryData = performanceSplit.map(data => {
@@ -290,13 +259,10 @@ class ExerciseData extends Component {
                                     primaryAverage = primaryAverage / primaryData.length
                                     primaryAverage = primaryAverage.toPrecision(2)
                                     yAxisPrimary.push(Number(primaryAverage))
-                                    // console.log("primary average", primaryAverage)
-
 
                                 } else {
                                     xAxis.push(this.formatDateForGraph(cw.date))
 
-
                                     const performanceSplit = result.performance.split('--')
                                     const primaryData = performanceSplit.map(data => {
                                         return data.split(' ')[0]
@@ -308,8 +274,6 @@ class ExerciseData extends Component {
                                     primaryAverage = primaryAverage / primaryData.length
                                     primaryAverage = primaryAverage.toPrecision(2)
                                     yAxisPrimary.push(Number(primaryAverage))
-                                    // console.log("primary average", primaryAverage)
-
 
                                     const planSplit = exercise.plan.split('--')
                                     const secondaryData = planSplit.map(data => {
@@ -321,8 +285,7 @@ class ExerciseData extends Component {
                                     })
                                     secondaryAverage = secondaryAverage / secondaryData.length
                                     secondaryAverage = secondaryAverage.toPrecision(2)
-                                    yAxisSecondary.push(Number(secondaryAverage))
-                                    // console.log("secondary average", secondaryAverage)   
+                                    yAxisSecondary.push(Number(secondaryAverage))   
                                 }
                             }
                         })
@@ -337,12 +300,6 @@ class ExerciseData extends Component {
             yPrimaryLabel: yPrimaryLabel,
             ySecondaryLabel: ySecondaryLabel
         })
-
-    }
-
-    componentDidUpdate() {
-
-
     }
 
     setExercise = ex => {
@@ -374,7 +331,6 @@ class ExerciseData extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className="ed-main-container">
                 <Select className="react-select-com" styles={reactSelectStyle} placeholder="Exercise" options={this.state.reactExerciseSelect} onChange={opt => this.setExercise(opt.value)} />
@@ -388,7 +344,7 @@ class ExerciseData extends Component {
                 ?
                 <div>
                     <Line
-                        data={{ labels: this.state.xAxis, datasets: [{ label: this.state.yPrimaryLabel, data: this.state.yAxisPrimary }] }}
+                        data={{ labels: this.state.xAxis, datasets: [{ label: this.state.yPrimaryLabel, data: this.state.yAxisPrimary, backgroundColor: 'rgba(9, 253, 255, 0)', borderColor: 'rgba(9, 253, 255, 1)' }] }}
                         options={{
                             scales: {
                                 yAxes: [{
@@ -404,7 +360,7 @@ class ExerciseData extends Component {
                 :
                 <div>
                     <Line
-                        data={{ labels: this.state.xAxis, datasets: [{ label: this.state.ySecondaryLabel, data: this.state.yAxisSecondary }] }}
+                        data={{ labels: this.state.xAxis, datasets: [{ label: this.state.ySecondaryLabel, data: this.state.yAxisSecondary, backgroundColor: 'rgba(9, 253, 255, 0)', borderColor: 'rgba(9, 253, 255, 1)' }] }}
                         options={{
                             scales: {
                                 yAxes: [{
