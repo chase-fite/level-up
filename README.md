@@ -14,4 +14,4 @@ There are 5 sections:\
 • Workouts - Displays a users created workouts which can be edited, deleted, or set as active. A user can also click the plus icon at the top to create a new workout\
 • Exercises - Displays a users created exercises which can be edited, deleted, or attached to a workout. A user can also click the plus icon at the top to create a new exercise\
 • History - Displays all the users completed workouts in order of date completed. Each completed workout can be edited or deleted\
-• Data - The user can select any exercise that is part of a completed workout, a start date, length of time, and format to display a graph of their exercise related data\
+• Data - The user can select any exercise that is part of a completed workout, a start date, length of time, and format to display a graph of their exercise related data
