@@ -2,10 +2,10 @@
 ## Setup:
 1. Clone this repository
 2. `cd` into the directory it creates
-3. In the `api` directory, create a copy of the `database.json.example` and remove the .example extension.
+3. In the `api` directory, create a copy of the `database.json.example` and remove the .example extension
 4. Run `npm install` and wait for all dependencies to be installed
-5. Run `npm start` to verify that installation was successful.
-6. Run your JSON server on a port other than 5002 or a port that's not 3000
+5. Run `npm start` to verify that installation was successful
+6. Run your JSON server on port 5002 or a port that's not 3000
 ## What is Level Up?
 Level Up is a dynamic, single page web application based in JavaScript and React. It was designed as a tool for anyone that wants to organize their workouts. A user can also submit their workout results and view a graph of exercise related data over a period of one to six months. I designed this as a mobile application with card-like styling, so a user can easily thumb through it and record data while they're working out.\
 \
