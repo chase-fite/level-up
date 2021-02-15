@@ -1,205 +1,209 @@
 .workout-card-body {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .exercise-container {
-    border: 1px solid black;
-    background-image: linear-gradient(#A8FEFF, #09FDFF);
-    border-radius: .25rem;
-    margin: 5px;
-    padding: 5px;
-    width: 200px;
+  border: 1px solid black;
+  background-image: linear-gradient(#a8feff, #09fdff);
+  border-radius: 0.25rem;
+  margin: 5px;
+  padding: 5px;
+  width: 200px;
 }
 
 .wc-workout-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border: 1px solid black;
-    border-radius: .25rem;
-    margin-bottom: 10px;
-    margin-left: 15px;
-    margin-right: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
-input:focus, select:focus {
-    outline: none;
+input:focus,
+select:focus {
+  outline: none;
 }
 
 .wc-workout-name {
-    text-align: center;
-    font-weight: 500;
+  text-align: center;
+  font-weight: 500;
 }
 
-.wc-exercise-name, .wc-added-exercise-name {
-    color: black;
-    font-weight: 500;
+.wc-exercise-name,
+.wc-added-exercise-name {
+  color: black;
+  font-weight: 500;
 }
 
 .wc-top-hr {
-    margin-top: 0;
-    margin-bottom: 2px !important;
-    border-color: grey;
+  margin-top: 0;
+  margin-bottom: 2px !important;
+  border-color: grey;
 }
 
 .wc-bottom-hr {
-    margin-bottom: 0;
-    border-color: grey;
+  margin-bottom: 0;
+  border-color: grey;
 }
 
 .wc-exercise-card {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 200px;
 }
 
 .wc-minus {
-    margin-left: 34px;
+  margin-left: 34px;
 }
 
 .wc-save {
-    margin-left: 34px;
+  margin-left: 34px;
 }
 
 .wc-check {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .wc-x {
-    margin-left: 34px;
+  margin-left: 34px;
 }
 
 .wc-edit {
-    margin-left: 34px;
+  margin-left: 34px;
 }
 
 .wcard-bottom-hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .wl-plus {
-    position: relative;
-    right: 10px;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    margin-left: 10px;
+  position: relative;
+  right: 10px;
+  margin-top: 8px;
+  margin-bottom: 6px;
+  margin-left: 10px;
 }
 
 .search-container {
-    display: flex;
-    margin-top: 6px;
-    margin-bottom: 6px;
+  display: flex;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .search-plus-container {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 69px;
-    border-bottom: 1px solid grey;
-    z-index: 2;
-    background-color: white;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 69px;
+  border-bottom: 1px solid grey;
+  z-index: 2;
+  background-color: white;
+  width: 100%;
 }
 
 .page-title {
-    text-align: center;
-    font-weight: 500;
-    background-color: white;
-    color: #FF0C00;
-    position: fixed;
-    top: 44px;
-    z-index: 2;
-    width: 100%;
-    height: 26px;
+  text-align: center;
+  font-weight: 500;
+  background-color: white;
+  color: #ff0c00;
+  position: fixed;
+  top: 44px;
+  z-index: 2;
+  width: 100%;
+  height: 26px;
 }
 
 .wl-card-container {
-    position: relative;
-    top: 70px;
-    z-index: 1;
+  position: relative;
+  top: 70px;
+  z-index: 1;
 }
 
 .we-added-exercise-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: 15px;
-    margin-left: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .search-input {
-    height: 24px;
-    width: 240px;
-    margin-right: 10px;
+  height: 24px;
+  width: 240px;
+  margin-right: 10px;
 }
 
 .wl-hr-below-search {
-    margin-top: 0px;
-    margin-bottom: 6px;
-    border-color: grey;
+  margin-top: 0px;
+  margin-bottom: 6px;
+  border-color: grey;
 }
 
 .wl-hr-below-card {
-    margin-left: -50%;
-    margin-right: -50%;
-    margin-top: 4px;
-    margin-bottom: 4px;
+  margin-left: -50%;
+  margin-right: -50%;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
-.we-minus, .we-save {
-    margin-left: 34px;
+.we-minus,
+.we-save {
+  margin-left: 34px;
 }
 
 .we-hr {
-    margin-top: 4px;
-    margin-bottom: 2px;
-    border-color: grey;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  border-color: grey;
 }
 
 .we-add-exercise {
-    margin-bottom: 8px;
-    margin-left: 4px;
+  margin-bottom: 8px;
+  margin-left: 4px;
 }
 
 .wc-title {
-    text-align: center;
-    font-weight: 500;
-    color: #FF0C00;
+  text-align: center;
+  font-weight: 500;
+  color: #ff0c00;
 }
 
 .we-labels {
-    margin-left: 4px;
+  margin-left: 4px;
 }
 
 .wc-workout-name-input {
-    height: 24px;
+  height: 24px;
 }
 
 .wc-workout-name-container {
-    display: flex;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    justify-content: center;
+  display: flex;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  justify-content: center;
 }
 
 .wc-added-exercise-container {
-    text-align: center;
+  text-align: center;
 }
 
 .wc-icons {
-    margin-bottom: 6px;
+  margin-bottom: 6px;
 }
 
-.we-exercise-name, .wce-exercise-name {
-    font-weight: 500;
+.we-exercise-name,
+.wce-exercise-name {
+  font-weight: 500;
 }
 
 .we-name-input {
-    height: 24px;
+  height: 24px;
 }
 
 .we-name-input-container {
-    margin-top: 6px;
-    margin-bottom: 6px;
-    height: 24px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  height: 24px;
 }

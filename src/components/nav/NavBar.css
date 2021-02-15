@@ -1,41 +1,41 @@
 .nav-link-black {
-    color: black;
-    padding: 8px 4px !important;
-    border-right: 1px solid gray;
-    height: 44px;
+  color: black;
+  padding: 8px 4px !important;
+  border-right: 1px solid gray;
+  height: 44px;
 }
 
-.nav-logout, .nav-reg {
-    border-right: none;
+.nav-logout,
+.nav-reg {
+  border-right: none;
 }
 
 .nav-link-black:hover {
-    color: #FF0C00;
-    text-decoration: none;
+  color: #ff0c00;
+  text-decoration: none;
 }
 
 .nav-link-red:hover {
-    color: #FF0C00;
-    text-decoration: none;
+  color: #ff0c00;
+  text-decoration: none;
 }
 
 header {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .navbar-style {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    z-index: 1;
-    background-color: #09FDFF;
-    background-image: linear-gradient(#A8FEFF, #09FDFF);
-    border: 1px solid black;
-    border-radius: .25rem;
-    height: 45px;
-    width: auto;
-    overflow: auto;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  z-index: 1;
+  background-color: #09fdff;
+  background-image: linear-gradient(#a8feff, #09fdff);
+  border-bottom: 1px solid black;
+  height: 45px;
+  width: auto;
+  overflow: auto;
 }
 
 .navbar-container {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
