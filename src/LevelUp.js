@@ -1,6 +1,4 @@
 import React from 'react';
-
-
 import { Component } from 'react'
 import NavBar from './components/nav/NavBar'
 import ApplicationViews from './components/ApplicationViews';
@@ -23,7 +21,6 @@ class LevelUp extends Component {
         });
     }
 
-
     componentDidMount() {
         this.setState({
             user: this.isAuthenticated()
@@ -35,7 +32,6 @@ class LevelUp extends Component {
 
         this.setState({user: this.isAuthenticated()})
     }
-    
 
     render() {
         return (

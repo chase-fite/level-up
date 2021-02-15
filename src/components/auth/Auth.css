@@ -1,51 +1,52 @@
 .login-container {
-    display: flex;
-    margin-bottom: 24px;
-    margin-top: 24px;
+  display: flex;
+  margin-bottom: 24px;
+  margin-top: 24px;
 }
 
 .login-label-container {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .login-input-container {
-    flex-direction: column;
-    margin-left: 34px;
+  flex-direction: column;
+  margin-left: 34px;
 }
 
 .login-input {
-    height: 24px;
-    width: 240px;
+  height: 24px;
+  width: 240px;
 }
 
 .reg-label-input-container {
-    display: flex;
-    margin-top: 24px;
+  display: flex;
+  margin-top: 24px;
 }
 
 .reg-input-container {
-    margin-left: 34px;
+  margin-left: 34px;
 }
 
 .reg-input {
-    height: 24px;
-    width: 170px;
+  height: 24px;
+  width: 170px;
 }
 
 .login-input {
-    height: 24px;
-    width: 200px;
+  height: 24px;
+  width: 200px;
 }
 
 h5 {
-    margin-top: 10px !important;
-    text-align: center;
+  margin-top: 10px !important;
+  text-align: center;
 }
 
-.btn-con {
-    text-align: center;
+.btn-container {
+  text-align: center;
 }
 
-.reg-main-container, .login-main-container {
-    margin: 0px 20px;
+.reg-main-container,
+.login-main-container {
+  margin: 0px 20px;
 }
