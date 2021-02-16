@@ -2,7 +2,7 @@
 
 ## Preface
 
-This was my first real attempt to build a web application. It was basically a three week trial-by-fire. Looking back on it, I will say the code is kind of a mess and the UI is a little awkward, but there are some things that I am proud of here. I put a ton of time into this over those three weeks and really pushed myself to learn as much as I could. I was really interested in cards as a UI style, so I built this with card-like styling as a responsive web app that works with mobile browsers. I also wanted to venture away from a standard CRUD app update page and implemented in-place editing for all the cards. Lastly, the thing I'm most proud of was integrating Chartjs into the app in order to graph data from the user's completed workouts.
+This was my first real attempt to build a web application. It was basically a three week trial-by-fire. Looking back on it, I will say the code is kind of a mess and the UI is a little awkward, but there are some things that I am proud of here. I put a ton of time into this over those three weeks and really pushed myself to learn as much as I could. I was interested in cards as a UI style, so I built this with card-like styling as a responsive web app that works with mobile browsers. I also wanted to venture away from a standard CRUD app update page and implemented in-place editing for all the cards. Lastly, the thing I'm most proud of was integrating Chartjs into the app in order to graph data from the user's completed workouts.
 
 ## What is Level Up?
 
