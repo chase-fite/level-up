@@ -6,7 +6,7 @@ This was my first real attempt to build a web application. It was basically a th
 
 ## What is Level Up?
 
-Level Up is a workout organizer as well as a data visualization tool. A user can create their own exercises and workouts with a variety of formats. They can also record their workout results and view a graph of their performance over 1-6 months. It was designed as a mobile web application so users could easily reference or record workouts from their phone. Level Up is a React application that uses json-server as a pseudo REST API and a json file for the database.
+Level Up is a workout organizer as well as a data visualization tool. A user can create their own exercises and workouts with a variety of formats. They can also record their workout results and view a graph of their performance over 1-6 months. It was designed as a mobile web application so users could easily reference or record workouts from their phone. It was built as a React application that uses json-server as a pseudo REST API and a json file for the database.
 
 ## Setup
 
