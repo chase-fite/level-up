@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import ExerciseCard from "./ExerciseCard";
-import APIManager from "../../modules/APIManager";
 import "./Exercises.css";
+import React, { Component } from "react";
+import APIManager from "../../modules/APIManager";
+import ExerciseCard from "./ExerciseCard";
 import ExerciseCreateForm from "./ExerciseCreateForm";
+import ExerciseEdit from "./ExerciseEdit";
+import { getUserExercises } from "../../modules/utility";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import ExerciseEdit from "./ExerciseEdit";
 
 class ExerciseList extends Component {
   state = {
@@ -17,57 +18,36 @@ class ExerciseList extends Component {
   };
 
   componentDidMount() {
-    this.getUsersExercises().then((exercisesList) => {
-      this.setState({
-        exercises: exercisesList,
-      });
-    });
+      getUserExercises().then(exercises => {
+          this.setState({
+              exercises: exercises
+          }) 
+      })
   }
-
-  getUsersExercises = async () => {
-    const creds = JSON.parse(localStorage.getItem("credentials"));
-    let exercises = [];
-
-    await APIManager.get(
-      `workouts?userId=${creds.loggedInUserId}&_embed=exercises`
-    ).then((workoutsRes) => {
-      workoutsRes.forEach((workout) => {
-        workout.exercises.forEach((exercise) => {
-          const modifiedExercise = exercise;
-          modifiedExercise.workoutName = workout.name;
-          exercises.push(modifiedExercise);
-        });
-      });
-    });
-
-    const exercisesSet = new Set(exercises);
-    exercises = Array.from(exercisesSet);
-    return exercises;
-  };
 
   handleSearch = (event) => {
     if (this.refs['search-input'].value === "") {
-        this.getUsersExercises().then((exercisesList) => {
+        getUserExercises().then(exercisesList => {
           this.setState({
             exercises: exercisesList,
           });
         });
+    } else {
+        const stateToChange = {};
+        stateToChange[event.target.id] = event.target.value;
+        this.setState(stateToChange);
+
+        const filteredExercises = this.state.exercises.filter(exercise => {
+            return (
+                exercise.name.toLowerCase().includes(this.refs['search-input'].value.toLowerCase()) ||
+                exercise.workoutName.toLowerCase().includes(this.refs['search-input'].value.toLowerCase())
+            );
+        });
+
+        this.setState({
+            exercises: filteredExercises
+        });
     }
-
-    const stateToChange = {};
-    stateToChange[event.target.id] = event.target.value;
-    this.setState(stateToChange);
-
-    const filteredExercises = this.state.exercises.filter(exercise => {
-        return (
-            exercise.name.toLowerCase().includes(this.refs['search-input'].value.toLowerCase()) ||
-            exercise.workoutName.toLowerCase().includes(this.refs['search-input'].value.toLowerCase())
-        );
-    });
-
-    this.setState({
-        exercises: filteredExercises
-    });
   };
 
   clearSearchBar = () => {

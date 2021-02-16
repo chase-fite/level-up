@@ -18,8 +18,8 @@ class ExerciseEditForm extends Component {
     });
   }
 
-  // i use this function to build some arrays with sequential numbers to help
-  // with sizing my dropdown selections
+  // this function is used to build some arrays with sequential numbers to help
+  // with sizing dropdown selections
   createRangeArray = (size) => {
     const resultArray = [];
     for (let i = 0; i < size; i++) {

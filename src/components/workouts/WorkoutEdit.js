@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinusCircle, faSave } from "@fortawesome/free-solid-svg-icons";
 import APIManager from "../../modules/APIManager";
 import WCExerciseCard from "./WCExerciseCard";
+import { getUserExercises } from "../../modules/utility";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinusCircle, faSave } from "@fortawesome/free-solid-svg-icons";
 
 class WorkoutEdit extends Component {
   state = {
@@ -11,26 +12,16 @@ class WorkoutEdit extends Component {
   };
 
   componentDidMount() {
-    const creds = JSON.parse(localStorage.getItem("credentials"));
-    APIManager.get(
-      `exercises?userId=${creds.loggedInUserId}&_sort=name&_expand=workout`
-    ).then((exerciseList) => {
-      let tempArray = [];
-      exerciseList.forEach((exercise) => {
-        tempArray.push(exercise);
-      });
-      const currentAddedExerciseList = exerciseList.filter(
-        (exercise) => exercise.workoutId === this.props.workout.id
-      );
-      tempArray = tempArray.filter(
-        (exercise) => exercise.workoutId !== this.props.workout.id
-      );
-
-      this.setState({
-        exerciseList: tempArray,
-        addedExercises: currentAddedExerciseList,
-      });
-    });
+    getUserExercises().then(exercisesRes => {
+        const workoutId = this.props.workout.id;
+        const addedExercises = exercisesRes.filter(exercise => {
+            return exercise.workoutId === workoutId;
+        })
+        this.setState({
+            addedExercises: addedExercises,
+            exerciseList: exercisesRes
+        })
+    }) 
   }
 
   addExerciseToAdded = (exercise) => {
@@ -160,7 +151,7 @@ class WorkoutEdit extends Component {
                   return <div key={indx}>{set}</div>;
                 })}
                 <hr className="ec-hr" />
-                <div>workout: {exercise.workout.name}</div>
+                <div>workout: {exercise.workoutName}</div>
                 <hr className="ec-hr" />
                 <FontAwesomeIcon
                   icon={faMinusCircle}
