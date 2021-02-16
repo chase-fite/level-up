@@ -1,9 +1,10 @@
+import "../exercises/Exercises.css";
+import WCExerciseCard from "./WCExerciseCard";
+import APIManager from "../../modules/APIManager";
+import { getUserExercises } from "../../modules/utility"
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinusCircle, faSave } from "@fortawesome/free-solid-svg-icons";
-import APIManager from "../../modules/APIManager";
-import WCExerciseCard from "./WCExerciseCard";
-import "../exercises/Exercises.css";
 
 class WorkoutCreate extends Component {
   state = {
@@ -12,18 +13,27 @@ class WorkoutCreate extends Component {
   };
 
   componentDidMount() {
-    const creds = JSON.parse(localStorage.getItem("credentials"));
-    APIManager.get(
-      `exercises?userId=${creds.loggedInUserId}&_sort=name&_expand=workout`
-    ).then((exerciseList) => {
-      let tempArray = [];
-      exerciseList.forEach((exercise) => {
-        tempArray.push(exercise);
-      });
-      this.setState({
-        exerciseList: tempArray,
-      });
-    });
+    getUserExercises().then(exercisesRes => {
+        this.setState({
+            exerciseList: exercisesRes
+        })
+    })
+
+
+
+
+    //const creds = JSON.parse(localStorage.getItem("credentials"));
+    //APIManager.get(
+      //`exercises?userId=${creds.loggedInUserId}&_sort=name&_expand=workout`
+    //).then((exerciseList) => {
+      //let tempArray = [];
+      //exerciseList.forEach((exercise) => {
+        //tempArray.push(exercise);
+      //});
+      //this.setState({
+        //exerciseList: tempArray,
+      //});
+    //});
   }
 
   addExerciseToAdded = (exercise) => {
@@ -148,7 +158,7 @@ class WorkoutCreate extends Component {
                   return <div key={indx}>{set}</div>;
                 })}
                 <hr className="ec-hr" />
-                <div>workout: {exercise.workout.name}</div>
+                <div>workout: {exercise.workoutName}</div>
                 <hr className="ec-hr" />
                 <FontAwesomeIcon
                   icon={faMinusCircle}

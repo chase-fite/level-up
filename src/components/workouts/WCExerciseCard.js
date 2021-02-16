@@ -11,7 +11,7 @@ class WCExerciseCard extends Component {
           return <div key={indx}>{set}</div>;
         })}
         <hr className="ec-hr" />
-        <div>workout: {this.props.exercise.workout.name}</div>
+        <div>workout: {this.props.exercise.workoutName}</div>
         <hr className="ec-hr" />
         <FontAwesomeIcon
           icon={faPlusCircle}
