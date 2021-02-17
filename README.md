@@ -20,3 +20,7 @@ Level Up is a workout organizer as well as a data visualization tool. A user can
 - Run `json-server -w database.json -p 8080`. This will start json-server.
 - From here you'll have to open a new tab or window with your terminal and navigate back to the project directory.
 - `cd` into `src/` and run `npm start`. This will start the app in your browser, and you should be good to go.
+
+## Usage
+
+If you just want to quickly see how things work with some prepopulated data, including the graph, feel free to login as `userA` password `123`.
