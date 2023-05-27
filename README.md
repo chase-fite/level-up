@@ -1,4 +1,4 @@
-# Level Up
+# Level Up (Nashville Software School front-end project)
 
 ## Preface
 
